@@ -1,39 +1,28 @@
 <template>
   <div id="app" class="container">
     <h1 class="display-5">RabbitWerks Tasker</h1>
-    <app-todo-list></app-todo-list>
-    <div class="input-control">
-      <h4>Add a Todo</h4>
-    <input type="text" name="" id="" v-model="newTodo">
-    <button 
-      id="add" 
-      @click="addTodo()">
-      Add New Todo
-      </button>
-    </div>
+    <app-task-list></app-task-list>
+    <app-add-task></app-add-task>
   </div>
 </template>
 
 <script>
-import TodoList from './components/TodoList'
+import TaskList from './components/TaskList'
+import AddTask from './components/AddTask'
 
 export default {
   name: 'app',
   data () {
     return {
-      newTodo: '',
+
     }
   },
   components: {
-    'app-todo-list': TodoList
+    'app-task-list': TaskList,
+    'app-add-task': AddTask
   },
   methods: {
-    addTodo(){
-      this.todos.push({
-        item: this.newTodo,
-        completed: false
-      })
-    }
+    
   }
 }
 </script>

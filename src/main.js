@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import TodoList from './components/TodoList.vue'
+import TaskList from './components/TaskList.vue'
 
-Vue.component('app-todo-list', TodoList)
+Vue.component('app-task-list', TaskList)
 
 export const eventBus = new Vue({})
 
