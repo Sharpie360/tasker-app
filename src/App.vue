@@ -6,17 +6,13 @@
     <input type="text" name="" id="" v-model="newTodo">
     <button id="add" @click="addTodo()">Add New Todo</button>
     </div>
-
-    <div class="todo-list">
-      <ul>
-        <li>
-        </li>
-      </ul>
-    </div>
+    <app-todo-list></app-todo-list>
   </div>
 </template>
 
 <script>
+import TodoList from './components/TodoList'
+
 export default {
   name: 'app',
   data () {
@@ -25,6 +21,9 @@ export default {
       newTodo: '',
       todos: []
     }
+  },
+  components: {
+    'app-todo-list': TodoList
   },
   methods: {
     addTodo(){
