@@ -1,12 +1,16 @@
 <template>
-  <div id="app">
-    My Own Todo
+  <div id="app" class="container">
+    <h1 class="display-5">RabbitWerks Tasker</h1>
+    <app-todo-list></app-todo-list>
     <div class="input-control">
       <h4>Add a Todo</h4>
     <input type="text" name="" id="" v-model="newTodo">
-    <button id="add" @click="addTodo()">Add New Todo</button>
+    <button 
+      id="add" 
+      @click="addTodo()">
+      Add New Todo
+      </button>
     </div>
-    <app-todo-list></app-todo-list>
   </div>
 </template>
 
@@ -17,9 +21,7 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       newTodo: '',
-      todos: []
     }
   },
   components: {
@@ -41,8 +43,8 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  text-align: center;
   margin-top: 60px;
 }
 
@@ -50,15 +52,8 @@ h1, h2 {
   font-weight: normal;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+
 
 a {
   color: #42b983;
