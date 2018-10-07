@@ -5,15 +5,22 @@
         v-for="task in taskList" 
         :key="task"
         class="list-group-item">
-        <h3> {{ task.task }}</h3>
+        <div class="task-header">
+          <h3> {{ task.task }}</h3>
         <!-- <input 
           type="checkbox" 
           name="completed"
           class="checkbox"
           v-model="task.completed"
         > -->
-        <p class="mb-0">Details</p>
-        
+        <p class="mb-0" @click="showDetails(task)"><span v-if="!task.detailsShown">more</span><span v-else>less</span></p>
+        </div>
+        <app-task-details 
+          v-if="task.detailsShown" 
+          :due="task.details.due"
+          :contact="task.details.contact"
+          :steps="task.details.steps">
+        </app-task-details>
         
       </li>
     </ul>
@@ -22,13 +29,17 @@
 
 <script>
   import { eventBus } from '../main.js'
+  import TaskDetails from './TaskDetails.vue'
 
   export default {
     data () {
       return {
         taskList: [
           { 
-            task: "Work on Tasker App", completed: true, details: {
+            task: "Work on Tasker App", 
+            completed: true, 
+            detailsShown: true,
+            details: {
               due: '10/22/18',
               contact: 'n/a' , 
               steps: [
@@ -37,7 +48,9 @@
             } 
           },
           { 
-            task: "Livestream Tasker coding", completed: false,
+            task: "Livestream Tasker coding", 
+            completed: false,
+            detailsShown: false,
             details: {
               due: '10/21/18',
               contact: 'Youtube Peeps!' , 
@@ -46,12 +59,23 @@
               ]
             } 
           },
-          { task: "Take over the world!!", completed: false },
+          { 
+            task: "Take over the world!!", 
+            completed: false,
+            detailsShown: false,
+            details: {
+            }
+          },
         ]
       }
     },
     methods: {
-
+      showDetails(task) {
+        task.detailsShown = !task.detailsShown
+      }
+    },
+    components: {
+      'app-task-details': TaskDetails
     },
     created() {
       eventBus.$on('newTaskAdded', newTaskData => {
@@ -68,11 +92,11 @@
   ul {
     list-style-type: none;
   }
-  li {
+  .task-header {
     display: flex;
     flex: 1;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
   }
   h3 {
     margin-bottom: 0;
