@@ -6,12 +6,14 @@
         :key="task"
         class="list-group-item">
         <h3> {{ task.task }}</h3>
-        <input 
+        <!-- <input 
           type="checkbox" 
           name="completed"
           class="checkbox"
           v-model="task.completed"
-        >
+        > -->
+        <p class="mb-0">Details</p>
+        
         
       </li>
     </ul>
@@ -19,14 +21,31 @@
 </template>
 
 <script>
-
+  import { eventBus } from '../main.js'
 
   export default {
     data () {
       return {
         taskList: [
-          { task: "Work on Todo App", completed: true },
-          { task: "Livestream Bloginator colorizing", completed: false },
+          { 
+            task: "Work on Tasker App", completed: true, details: {
+              due: '10/22/18',
+              contact: 'n/a' , 
+              steps: [
+                'write code', 'style stuff', 'groove out'
+              ]
+            } 
+          },
+          { 
+            task: "Livestream Tasker coding", completed: false,
+            details: {
+              due: '10/21/18',
+              contact: 'Youtube Peeps!' , 
+              steps: [
+                'write code', 'style stuff', 'groove out'
+              ]
+            } 
+          },
           { task: "Take over the world!!", completed: false },
         ]
       }
@@ -35,7 +54,12 @@
 
     },
     created() {
-      
+      eventBus.$on('newTaskAdded', newTaskData => {
+        this.taskList.push({
+          task: newTaskData,
+          completed: false
+        })
+      })
     }
   }
 </script>
