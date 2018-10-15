@@ -1,16 +1,20 @@
 <template>
   <div class="details card-body">
     <div class="details-steps">
-      <ul>
-        <li v-for="(step, i) in steps" :key="step">
+      <ul class="list-group">
+        <li class="list-group-item steps-title">Task Steps</li>
+        <li v-for="(step, i) in steps" :key="step" class="list-group-item">
           {{i + 1}}. {{ step }}
         </li>
 
       </ul>
     </div>
-    <div class="details-info">
-      <p >Contact Info: {{ contact }}</p>
-      <p >Due Date: {{ due }}</p>
+    <div class="details-info card">
+      <h5 class="card-header addtl-details-title">Adtl. Details</h5>
+      <div class="card-body">
+        <p class="card-text">Contact Info: {{ contact }}</p>
+        <p class="card-text">Due Date: {{ due }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -39,15 +43,20 @@
   padding-left: 0;
 }
 
-.details > div {
+/* .details > div {
   border: 1px solid #ccc
-}
+} */
 
 li {
-  margin-left: -1rem;
   list-style: none;
 }
-p {
-  margin-left: 1rem;
+.steps-title {
+  background-color: #00D6A4;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+ .addtl-details-title {
+  background-color: #03D8CB;
+  height: 52px;
 }
 </style>
