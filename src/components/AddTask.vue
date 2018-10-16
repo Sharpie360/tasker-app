@@ -10,7 +10,7 @@
     <div class="card">
       <h5 class="card-header add-details-header">Add Additional Details
         <span 
-          class="add-details-btn" 
+          class="add-details-expander" 
           v-on:click="showAddDetailsCmp">+</span>
       </h5>
       
@@ -81,9 +81,9 @@
   flex: 1;
   justify-content: space-between
 }
-.add-details-btn {
+.add-details-expander {
   font-size: 2rem;
-  margin: -.4rem 0 -.5rem 0;
+  margin: -.3rem 0 -.5rem 0;
   cursor: pointer;
 }
 
