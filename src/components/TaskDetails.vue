@@ -40,15 +40,13 @@
 .details {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  padding-left: 0;
+  grid-gap: 20px;
+  padding: 1rem 0;
 }
-
-/* .details > div {
-  border: 1px solid #ccc
-} */
 
 li {
   list-style: none;
+  border: 1px solid rgba(33, 33, 33, .4);
 }
 .steps-title {
   background-color: #00D6A4;
@@ -57,6 +55,10 @@ li {
 }
  .addtl-details-title {
   background-color: #03D8CB;
-  height: 52px;
+  height: 54px;
+  border-bottom: 1px solid rgba(33, 33, 33, .2);
+}
+.card {
+  border: 1px solid rgba(33, 33, 33, .4);
 }
 </style>
