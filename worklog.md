@@ -25,6 +25,17 @@
 - updated classname add-details-btn > add-details-expander, adjusted margin for expanded
 
 
+## 10/17/18
+
+### Add Steps 
+- styling with flexbox
+- actionBtns group added for important, delete step (dont need edit for adding) ((how about optional instad of edit))
+- Add Task btn modify
+- v-for list render
+
+### Addtl Details
+- adjusted styles for card header and title
+
 [ ] change contact to resources?
 [ ] additional details - card flush list
 [ ] Steps list inputs
