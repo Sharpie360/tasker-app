@@ -26,9 +26,19 @@
           </div>
         </div> <!-- .grid end -->
         <div class="card">
-          <h6 class="card-header">Add Task Steps</h6>
-          <div class="card-body">
-
+          <h6 class="card-header">Add Task Step</h6>
+          <div class="card-body py-1 px-0">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item py-2" v-for="(step, i) in steps" :key="step">
+                <div class="form-group step-group">
+                  <label class="step-group--label" :for="steps[i].i">Step {{ ++i }}.</label>
+                  <input class="form-control step-group--input" type="text" :id="step[i].i" :value="step">
+                  <div class="step-group--actionBtns">
+                    <img src="" alt="icon button delete step" class="actionBtn actionBtn-icon">
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -38,9 +48,8 @@
         id="add" 
         class="btn btn-info"
         @click="addNewTask()">
-        Add New Task
+        <h5>Add New Task</h5>
       </button>
-      <button class="btn btn-success">Add Additional Details</button>
     </div>
   </div>
 </template>
@@ -55,7 +64,7 @@
         newTask: '',
         due: '',
         contact: '',
-        steps: []
+        steps: ["a test step", "another damn test step!"]
       }
     },
     methods: {
@@ -93,5 +102,17 @@
   grid-gap: 1rem;
 }
 
+.step-group {
+  display: flex;
+  flex: 1;
+}
+.step-group--label {
+  flex: 1;
+}
+.step-group--input {
+  flex: 4;
+}
+.step-group--actionBtns {
 
+}
 </style>
