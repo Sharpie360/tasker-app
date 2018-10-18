@@ -55,7 +55,9 @@ li {
 }
  .addtl-details-title {
   background-color: #03D8CB;
-  height: 54px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 1rem;
   border-bottom: 1px solid rgba(33, 33, 33, .2);
 }
 .card {
