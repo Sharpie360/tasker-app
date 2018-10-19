@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <h1 class="display-5">RabbitWerks Tasker</h1>
+    <h1 class="display-4 shadow-white">RabbitWerks Tasker</h1>
     <app-task-list></app-task-list>
     <app-add-task></app-add-task>
   </div>
@@ -28,6 +28,11 @@ export default {
 </script>
 
 <style>
+
+html {
+  font-size: 20px;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -36,7 +41,9 @@ export default {
   padding-top: 60px;
 }
 
-
+.shadow-white {
+  text-shadow: 1px 1px 3px rgba(247, 247, 247, .75);
+}
 a {
   color: #42b983;
 }
