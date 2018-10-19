@@ -36,12 +36,27 @@
 ### Addtl Details
 - adjusted styles for card header and title
 
+
+## 10/17/18
+
+### Addtl Details
+- markup written, and styles added for layout
+- v-models added for inputs
+- steps add delete methods
+- add to tasklist method
+
+### TaskList
+- fixed created lifecycle method for listening for newTask custom event and loading data properly
+- task_detailsShown prefix
+- styles added
+
+
 [ ] change contact to resources?
 [ ] additional details - card flush list
 [ ] Steps list inputs
-[ ] Set curser to pointer on hover for details
+[x] Set curser to pointer on hover for details
 [x] add details area for add task cmp
-[.] style details cmp
+[x] style details cmp
 [ ] add completed signification
 [.] style app with RabbitWerks colors?
     - brightGreen: #00D6A4
@@ -53,3 +68,11 @@
     - fontColor: #f7f7f7
     
 ### Progress: ||||||
+
+
+
+# todo
+
+- clear add Task cmp on submit
+- clear the steps array
+- v-model for each step input?
