@@ -3,6 +3,7 @@
     <h3>Add Task</h3>
     <input 
       type="text" 
+      placeholder="new task title"
       id="addInput" 
       class="form-control mb-3" 
       v-model="newTask.task"
@@ -50,21 +51,20 @@
                     class="form-control step-group--input" 
                     type="text" 
                     :id="step[i]" 
-                    v-model="newTask.steps[i]"
+                    v-model="newTask.steps[i].value"
                   >
 
                   <div class="step-group--actionBtns">
-                    <img 
-                      src="../assets/exclamation-solid.svg" 
-                      alt="icon button important step" 
-                      class="actionBtn actionBtn-icon" 
-                      id="step-ab-important"
-                    >
+                      <div class="">
+                        <img src="../assets/exclamation-solid.svg" alt=""
+                        class="actionBtn actionBtn-icon"
+                        @click="setAsImportantStep">
+                      </div>
+
                     <img 
                       src="../assets/times-solid.svg" 
                       alt="icon button delete step" 
-                      class="actionBtn actionBtn-icon"
-                      id="step-ab-remove"
+                      class="actionBtn actionBtn-icon step-remove"
                       @click="deleteStep(i)"
                     >
                   </div>
@@ -75,13 +75,24 @@
         </div>
       </div>
     </div>
-    <div class="action-btns mt-3">
+    <div id="add-task-btn-div" class="mt-3">
       <button 
         id="add" 
         class="btn btn-info"
         @click="addNewTask()">
         <h5 class="mb-0">Add New Task</h5>
       </button>
+      <div 
+        id="alert-box" 
+        class="alert py-2 ml-3 mb-0 text-center" 
+        :class="alertStyles"
+        v-show="alertMsg.isAlert">
+        <p 
+          class="mb-0" 
+          id="alert-msg">
+          {{ alertMsg.message }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -97,33 +108,86 @@
           task: '',
           due: '',
           contact: '',
-          steps: []
-        }
+          steps: [
+  
+          ],
+        },
+        alertMsg: {
+          isAlert: false,
+          isSuccess: true,
+          message: ''
+        },
+        isImportantStep: false
       }
+    },
+    computed: {
+      alertStyles () {
+        return {
+          'alert-success': this.alertMsg.isSuccess,
+          'alert-danger': !this.alertMsg.isSuccess
+        }
+      }      
     },
     methods: {
       addNewTask() {
-        const newTaskData = this.newTask
-        eventBus.$emit('newTaskAdded', newTaskData)
-        this.newTask.task = ''
-        this.newTask.due = ''
-        this.newTask.contact = ''
-        this.newTask.steps = []
-        this.newTask.addDetails_detailsShown = false
+        if(this.newTask.task === '') {
+          console.log('Task must have a title')
+          this.createAlert(false, 'Your task should have a title')
+          return
+        } else {
+          const newTaskData = this.newTask
+          eventBus.$emit('newTaskAdded', newTaskData)
+          this.newTask.task = ''
+          this.newTask.due = ''
+          this.newTask.contact = ''
+          this.newTask.steps = []
+          this.newTask.addDetails_detailsShown = false
+        }
       },
       showAddDetailsCmp(){
-        console.log(this.newTask.addDetails_detailsShown)
+        // console.log(this.newTask.addDetails_detailsShown)
         this.newTask.addDetails_detailsShown = !this.newTask.addDetails_detailsShown
       },
       addStepToSteps(){
-        this.newTask.steps.push('')
+        if(this.newTask.steps.length === 0){
+            this.newTask.steps.push({
+            value: '',
+          })
+        } else if (this.newTask.steps[this.newTask.steps.length - 1].value === ''){
+          console.log('empty string')
+          this.createAlert(false, 'Please fill out the current step')
+          return
+        } else {
+          this.newTask.steps.push({
+            value: '',
+            isImportantStep: this.isImportantStep
+          })
+        }
+      },
+      setAsImportantStep(i){
+        console.log('test', i)
+        // this.newTask.isImportantStep = !this.newTask.isImportantStep
+        // const svg = document.querySelector('.step-important')
+        // console.log(svg)
       },
       deleteStep(i){
         console.log('deleteClicked', i)
+        this.createAlert(true)
         this.newTask.steps.splice(i, 1)
+      },
+      createAlert(tF, msg) {
+        const vm = this
+        this.alertMsg.isAlert = true
+        this.alertMsg.isSuccess = tF
+        this.alertMsg.message = msg
+        setTimeout(() => {
+          vm.alertMsg.isAlert = false
+        }, 3000)
       }
     }
   }
+
+
 </script>
 
 <style scoped>
@@ -170,7 +234,18 @@
   height: 1.5rem;
   width: 1.5rem;
 }
-#step-ab-remove {
+.step-important {
+  /* background: rgb(93, 93, 93); */
+}
+.step-remove {
   height: 2rem
+}
+
+#add-task-btn-div {
+  display: flex;
+}
+
+#alert-box {
+  flex: 1;
 }
 </style>
