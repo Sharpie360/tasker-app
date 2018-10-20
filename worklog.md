@@ -37,7 +37,7 @@
 - adjusted styles for card header and title
 
 
-## 10/17/18
+## 10/18/18
 
 ### Addtl Details
 - markup written, and styles added for layout
@@ -51,6 +51,28 @@
 - styles added
 
 
+## 10/19/18
+
+### add steps validation
+- validation for add steps, for empty step list, extra empty steps
+
+### alert-box
+- created element for alerting messages
+-- need to adjust bootstrap theme for alerts
+
+### taskList
+- gave each task an id with fn to set each new task id
+
+### steps btns
+- started on important step action btn
+- need a way to traverse svg as well as aplly vue click listen to it.
+- changes steps array from strings to object with
+- - value: string
+- - isImportantStep: boolean
+
+
+
+[ ] debug important step event.
 [ ] change contact to resources?
 [ ] additional details - card flush list
 [ ] Steps list inputs
@@ -73,6 +95,12 @@
 
 # todo
 
-- clear add Task cmp on submit
-- clear the steps array
-- v-model for each step input?
+- validation for add steps blank ---> done
+- global counters
+- give tasks an id ---> done
+- action btns
+- alert msg function and markup ---> done
+
+-flexbox
+-css grid
+-sarah svg talks
