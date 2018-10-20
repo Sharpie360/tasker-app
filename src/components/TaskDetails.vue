@@ -3,8 +3,9 @@
     <div class="details-steps">
       <ul class="list-group">
         <li class="list-group-item steps-title">Task Steps</li>
-        <li v-for="(step, i) in steps" :key="step" class="list-group-item">
-          {{i + 1}}. {{ step }}
+        <li v-for="(step, i) in steps" :key="step[i]" class="list-group-item">
+          {{i + 1}}. {{ step.value }}
+          <!-- important icon -->
         </li>
 
       </ul>
@@ -30,7 +31,7 @@
     props: {
       due: String,
       contact: String,
-      steps: []
+      steps: [],
     }
   }
 </script>
