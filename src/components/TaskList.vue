@@ -3,7 +3,7 @@
     <ul class="list-group">
       <li 
         v-for="task in taskList" 
-        :key="task"
+        :key="task._id"
         class="list-group-item">
         <div class="task-header">
           <h3> {{ task.task }}</h3>
@@ -36,6 +36,7 @@
       return {
         taskList: [
           { 
+            _id: 0,
             task: "Work on Tasker App", 
             completed: true, 
             task_detailsShown: true,
@@ -43,11 +44,23 @@
               due: '10/22/18',
               contact: 'n/a' , 
               steps: [
-                'write code', 'style stuff', 'groove out'
+                { 
+                  value: 'write code in VUE!',
+                  isImportantStep: false
+                }, 
+                {
+                  value: 'style stuff',
+                  isImportantStep: false
+                }, 
+                {
+                  value: 'groove out',
+                  isImportantStep: false
+                }
               ]
             } 
           },
           { 
+            _id: 1,
             task: "Livestream Tasker coding", 
             completed: false,
             task_detailsShown: false,
@@ -58,14 +71,8 @@
                 'write code', 'style stuff', 'groove out'
               ]
             } 
-          },
-          { 
-            task: "Take over the world!!", 
-            completed: false,
-            task_detailsShown: false,
-            details: {
-            }
-          },
+          }
+         
         ]
       }
     },
@@ -80,6 +87,7 @@
     created() {
       eventBus.$on('newTaskAdded', newTaskData => {
         this.taskList.push({
+          _id: this.taskList.length,
           task: newTaskData.task,
           task_detailsShown: false,
           details: {
