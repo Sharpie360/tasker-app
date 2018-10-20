@@ -234,9 +234,7 @@
   height: 1.5rem;
   width: 1.5rem;
 }
-.step-important {
-  /* background: rgb(93, 93, 93); */
-}
+
 .step-remove {
   height: 2rem
 }
