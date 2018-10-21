@@ -38,8 +38,8 @@
 
           </h5>
           <div class="card-body p-0">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item py-2" v-for="(step, i) in newTask.steps" :key="step._id">
+            <ul class="list-group list-group-flush" id="steps-list">
+              <li class="list-group-item py-2" v-for="(step, i) in newTask.steps" :key="i">
                 <div class="form-group step-group mb-0">
                   <!-- add editmode with vshow -->
                   <label 
@@ -55,10 +55,23 @@
                   >
 
                   <div class="step-group--actionBtns">
-                      <div class="">
-                        <img src="../assets/exclamation-solid.svg" alt=""
+                      <div 
+                        class="important-outer" 
+                        @click="setAsImportantStep(i)"> 
+                        <!-- <img src="../assets/exclamation-solid.svg" alt=""
                         class="actionBtn actionBtn-icon"
-                        @click="setAsImportantStep">
+                        > -->
+                        <svg 
+                          class="step-important-svg" 
+                          
+                          xmlns="http://www.w3.org/2000/svg" 
+                          viewBox="0 0 192 512">
+                            <path 
+                              class="important-svg-path"
+                              fill="currentColor" 
+                              d="M176 432c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80zM25.26 25.199l13.6 272C39.499 309.972 50.041 320 62.83 320h66.34c12.789 0 23.331-10.028 23.97-22.801l13.6-272C167.425 11.49 156.496 0 142.77 0H49.23C35.504 0 24.575 11.49 25.26 25.199z">
+                            </path>
+                        </svg>
                       </div>
 
                     <img 
@@ -117,7 +130,6 @@
           isSuccess: true,
           message: ''
         },
-        isImportantStep: false
       }
     },
     computed: {
@@ -126,7 +138,7 @@
           'alert-success': this.alertMsg.isSuccess,
           'alert-danger': !this.alertMsg.isSuccess
         }
-      }      
+      },
     },
     methods: {
       addNewTask() {
@@ -145,13 +157,13 @@
         }
       },
       showAddDetailsCmp(){
-        // console.log(this.newTask.addDetails_detailsShown)
         this.newTask.addDetails_detailsShown = !this.newTask.addDetails_detailsShown
       },
-      addStepToSteps(){
+      addStepToSteps(i){
         if(this.newTask.steps.length === 0){
             this.newTask.steps.push({
             value: '',
+            isImportantStep: false
           })
         } else if (this.newTask.steps[this.newTask.steps.length - 1].value === ''){
           console.log('empty string')
@@ -160,19 +172,23 @@
         } else {
           this.newTask.steps.push({
             value: '',
-            isImportantStep: this.isImportantStep
+            isImportantStep: false
           })
         }
       },
-      setAsImportantStep(i){
-        console.log('test', i)
-        // this.newTask.isImportantStep = !this.newTask.isImportantStep
-        // const svg = document.querySelector('.step-important')
-        // console.log(svg)
+      setAsImportantStep(currentStep){
+        console.log(currentStep)
+        // console.log('before: ', this.newTask.steps[currentStep].isImportantStep)
+        this.newTask.steps[currentStep].isImportantStep = !this.newTask.steps[currentStep].isImportantStep
+        // console.log('after ', this.newTask.steps[currentStep].isImportantStep, this.showIf_isImportant)
+        const svgPath = document.querySelectorAll('.important-svg-path')
+        const pathArr = Array.from(svgPath)
+        console.log(pathArr)
+
       },
       deleteStep(i){
         console.log('deleteClicked', i)
-        this.createAlert(true)
+        this.createAlert(true, `Step ${i + 1} was removed..`)
         this.newTask.steps.splice(i, 1)
       },
       createAlert(tF, msg) {
@@ -234,9 +250,28 @@
   height: 1.5rem;
   width: 1.5rem;
 }
+.important-outer {
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.step-important-svg {
+  flex: 1;
+  height: 1.75rem;
+  width: 1.75rem
+}
+.important-svg-path {
+  fill: #000;
+  transition: fill 0.1s ease-in-out;
+}
+.step-important-svg .important-true {
+  fill: #00D6A4;
+}
 
 .step-remove {
-  height: 2rem
+  height: 2.25rem;
+  width: 2.25rem;
 }
 
 #add-task-btn-div {
