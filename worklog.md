@@ -70,6 +70,11 @@
 - - value: string
 - - isImportantStep: boolean
 
+## 10/19/18
+
+### Important Steps property
+- each steps important property is registering and sending to the task list corrently
+- stuck on the toggle color for svg
 
 
 [ ] debug important step event.
@@ -101,6 +106,3 @@
 - action btns
 - alert msg function and markup ---> done
 
--flexbox
--css grid
--sarah svg talks
