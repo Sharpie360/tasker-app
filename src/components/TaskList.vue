@@ -46,15 +46,18 @@
               steps: [
                 { 
                   value: 'write code in VUE!',
-                  isImportantStep: false
+                  isImportantStep: true,
+                  isOptionalStep: false
                 }, 
                 {
                   value: 'style stuff',
-                  isImportantStep: false
+                  isImportantStep: false,
+                  isOptionalStep: true
                 }, 
                 {
                   value: 'groove out',
-                  isImportantStep: false
+                  isImportantStep: false,
+                  isOptionalStep: false
                 }
               ]
             } 
