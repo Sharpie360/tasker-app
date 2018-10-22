@@ -10,7 +10,7 @@
 - plus expander
 - button added
 
-### livestreamed session 
+##### LIVESTREAMED 
 - [https://youtu.be/TKI3eUa-VDc]
 
 
@@ -70,17 +70,37 @@
 - - value: string
 - - isImportantStep: boolean
 
-## 10/19/18
+## 10/[19-20]/18
 
 ### Important Steps property
 - each steps important property is registering and sending to the task list corrently
 - stuck on the toggle color for svg
 
+##### LIVESTREAMED
+[https://youtu.be/UrUeqC25WYY]
 
-[ ] debug important step event.
+[https://youtu.be/DFvKSjZDYxQ]
+
+## 10/21/18
+
+### Fixed isImportantStep bug
+- set dynamic styling of svg colors
+- independant of eachother
+
+### isOptionalStep feature added
+- dynamic styling of svg
+- list item bgcolor change for optional
+
+##### LIVESTREAMED
+
+[https://youtu.be/BXF9anyCPq0]
+
+
+
+[x] debug important step event.
 [ ] change contact to resources?
 [ ] additional details - card flush list
-[ ] Steps list inputs
+[x] Steps list inputs
 [x] Set curser to pointer on hover for details
 [x] add details area for add task cmp
 [x] style details cmp
@@ -94,15 +114,14 @@
     - navbarBlack: #0a0a0a
     - fontColor: #f7f7f7
     
-### Progress: ||||||
+### Progress: ||||||||||
 
 
 
 # todo
 
-- validation for add steps blank ---> done
 - global counters
-- give tasks an id ---> done
 - action btns
-- alert msg function and markup ---> done
+- complete tasks cmp
+- add ! to tasklist steps [*]
 
