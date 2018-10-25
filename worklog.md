@@ -95,7 +95,16 @@
 
 [https://youtu.be/BXF9anyCPq0]
 
+## 10/24/18
 
+### Refactored Add Steps Cmp
+- created AddTask cmp folder
+- - AddTask.vue
+- - AddSteps.vue
+
+##### LIVESTREAMED
+
+[]
 
 [x] debug important step event.
 [ ] change contact to resources?
@@ -114,14 +123,11 @@
     - navbarBlack: #0a0a0a
     - fontColor: #f7f7f7
     
-### Progress: ||||||||||
+### Progress: ||||||||||||||
 
 
 
 # todo
 
-- global counters
-- action btns
-- complete tasks cmp
-- add ! to tasklist steps [*]
-
+* break out add steps to child cmp
+* break out svgs to own cmps
