@@ -64,7 +64,7 @@
     props: {
       due: String,
       contact: String,
-      steps: [],
+      steps: Array,
     }
   }
 </script>
