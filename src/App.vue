@@ -8,7 +8,7 @@
 
 <script>
 import TaskList from './components/TaskList'
-import AddTask from './components/AddTask'
+import AddTask from './components/addTask/AddTask'
 
 export default {
   name: 'app',
