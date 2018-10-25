@@ -104,8 +104,10 @@
 
 ##### LIVESTREAMED
 
-[]
+[https://youtu.be/rJvHi7Bhau0]
 
+---
+### Checklist
 [x] debug important step event.
 [ ] change contact to resources?
 [ ] additional details - card flush list
