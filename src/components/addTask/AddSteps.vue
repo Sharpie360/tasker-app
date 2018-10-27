@@ -21,46 +21,23 @@
             <input 
               class="form-control step-group--input" 
               type="text" 
-              :id="step[i]" 
-              v-model="steps[i].value"
-            >
+              :id="steps[i]" 
+              v-model="steps[i].value">
 
             <div class="step-group--actionBtns">
-                <div 
-                  class="action-btn-outer" 
-                  @click="setAsImportantStep(i)"> 
-                  <svg 
-                    class="step-important-svg"  
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 192 512">
-                      <!-- Dynamic Styling of the ! icon fixed!!! vvvvv -->
-                      <path 
-                        class="important-svg-path"
-                        :class="{ 'important-true': steps[i].isImportantStep }"
-                        fill="currentColor" 
-                        d="M176 432c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80zM25.26 25.199l13.6 272C39.499 309.972 50.041 320 62.83 320h66.34c12.789 0 23.331-10.028 23.97-22.801l13.6-272C167.425 11.49 156.496 0 142.77 0H49.23C35.504 0 24.575 11.49 25.26 25.199z">
-                      </path>
-                  </svg>
-                </div>
-                <div 
-                  class="action-btn-outer"
-                  >
-                  <svg 
-                    class="step-optional-svg" 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    viewBox="0 0 384 512"
-                    @click="setAsOptionalStep(i)"
-
-                    >
-                      <path 
-                        class="optional-svg-path"
-                        :class="{ 'optional-true': steps[i].isOptionalStep }"
-                        fill="currentColor" 
-                        d="M202.021 0C122.202 0 70.503 32.703 29.914 91.026c-7.363 10.58-5.093 25.086 5.178 32.874l43.138 32.709c10.373 7.865 25.132 6.026 33.253-4.148 25.049-31.381 43.63-49.449 82.757-49.449 30.764 0 68.816 19.799 68.816 49.631 0 22.552-18.617 34.134-48.993 51.164-35.423 19.86-82.299 44.576-82.299 106.405V320c0 13.255 10.745 24 24 24h72.471c13.255 0 24-10.745 24-24v-5.773c0-42.86 125.268-44.645 125.268-160.627C377.504 66.256 286.902 0 202.021 0zM192 373.459c-38.196 0-69.271 31.075-69.271 69.271 0 38.195 31.075 69.27 69.271 69.27s69.271-31.075 69.271-69.271-31.075-69.27-69.271-69.27z">
-                      </path>
-                  </svg>
-                </div>
-
+              <div 
+                v-on:click="setAsImportantStep(i)"
+                class="action-btn-outer">
+                <app-important-svg 
+                  :important="steps[i].isImportantStep">
+                </app-important-svg>
+              </div>
+              <div 
+                @click="setAsOptionalStep(i)"
+                class="action-btn-outer">
+                <app-optional-svg></app-optional-svg>
+              </div>
+                
               <img 
                 src="../../assets/times-solid.svg" 
                 alt="icon button delete step" 
@@ -76,13 +53,21 @@
 </template>
 
 <script>
-import { eventBus } from '../../main.js'
-import AddTask from './AddTask'
+  import { eventBus } from '../../main.js'
+  import AddTask from './AddTask'
+
+  import ImportantSVG from '../svgs/ImportantSVG'
+  import OptionalSVG from '../svgs/OptionalSVG'
+
   export default {
     data () {
       return {
         steps: []
       }
+    },
+    components: {
+      'app-important-svg': ImportantSVG,
+      'app-optional-svg': OptionalSVG
     },
     methods: {
       addStepToSteps(i){
@@ -106,6 +91,9 @@ import AddTask from './AddTask'
       },
       submitSteps(){
         console.log('test submit')
+        if (this.steps[this.steps.length - 1].value === '') {
+          this.steps.pop()
+        }
         eventBus.$emit('updatedSteps', this.steps)
         this.steps = []
       },
@@ -178,8 +166,8 @@ import AddTask from './AddTask'
   fill: #006473;
 }
 .step-remove {
-  height: 2.25rem;
-  width: 2.25rem;
+  height: 2.35rem;
+  width: 2.35rem;
 }
 
 
