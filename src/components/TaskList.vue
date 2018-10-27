@@ -7,16 +7,13 @@
         class="list-group-item">
         <div class="task-header">
           <h3> {{ task.task }}</h3>
-        <!-- <input 
-          type="checkbox" 
-          name="completed"
-          class="checkbox"
-          v-model="task.completed"
-        > -->
-        <p class="mb-0 task-detail-expander" @click="showDetails(task)"><span v-if="!task.task_detailsShown">more</span><span v-else>less</span></p>
+        <img class="task-detail-expander expanded" 
+          @click="showDetails(task)"
+          src="../assets/angle-left-solid.svg" alt="">
         </div>
         <app-task-details 
-          v-if="task.task_detailsShown" 
+          v-if="task.task_detailsShown"
+          :_id="task._id" 
           :due="task.details.due"
           :contact="task.details.contact"
           :steps="task.details.steps">
@@ -38,7 +35,7 @@
           { 
             _id: 0,
             task: "Work on Tasker App", 
-            completed: true, 
+            completed: false, 
             task_detailsShown: true,
             details: {
               due: '10/22/18',
@@ -47,34 +44,39 @@
                 { 
                   value: 'write code in VUE!',
                   isImportantStep: true,
-                  isOptionalStep: false
+                  isOptionalStep: false,
+                  stepCompleted: false
                 }, 
                 {
                   value: 'style stuff',
                   isImportantStep: false,
-                  isOptionalStep: true
+                  isOptionalStep: true,
+                  stepCompleted: false
+
                 }, 
                 {
                   value: 'groove out',
                   isImportantStep: false,
-                  isOptionalStep: false
+                  isOptionalStep: false,
+                  stepCompleted: false
+
                 }
               ]
             } 
           },
-          { 
-            _id: 1,
-            task: "Livestream Tasker coding", 
-            completed: false,
-            task_detailsShown: false,
-            details: {
-              due: '10/21/18',
-              contact: 'Youtube Peeps!' , 
-              steps: [
-                'write code', 'style stuff', 'groove out'
-              ]
-            } 
-          }
+          // { 
+          //   _id: 1,
+          //   task: "Livestream Tasker coding", 
+          //   completed: false,
+          //   task_detailsShown: false,
+          //   details: {
+          //     due: '10/21/18',
+          //     contact: 'Youtube Peeps!' , 
+          //     steps: [
+          //       'write code', 'style stuff', 'groove out'
+          //     ]
+          //   } 
+          // }
          
         ]
       }
@@ -82,6 +84,11 @@
     methods: {
       showDetails(task) {
         task.task_detailsShown = !task.task_detailsShown
+      },
+      toggleStepCompleted(i, id){
+        console.log(i, id)
+        this.taskList[id].details.steps[i].stepCompleted = !this.taskList[id].details.steps[i].stepCompleted
+        console.log(this.taskList[id].details.steps[i].stepCompleted)
       }
     },
     components: {
@@ -101,6 +108,11 @@
           completed: false
         })
       })
+      eventBus.$on('toggleStepCompleted', indexID => {
+        console.log('Step index = ', indexID.i)
+        console.log('taskID = ', indexID.id)
+        this.toggleStepCompleted(indexID.i, indexID.id)
+      })
     }
   }
 </script>
@@ -109,6 +121,8 @@
   ul {
     list-style-type: none;
   }
+
+
   .task-header {
     display: flex;
     flex: 1;
@@ -117,6 +131,10 @@
   }
   .task-detail-expander {
     cursor: pointer; 
+    height: 2.5rem;
+  }
+  .task-detail-expander .expanded {
+    transform: rotate(-90deg)
   }
 
   h3 {
