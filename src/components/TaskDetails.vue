@@ -7,25 +7,26 @@
           v-for="(step, i) in steps" 
           :key="step[i]" 
           :class="{ 'step-optional': step.isOptionalStep }"
-          class="list-group-item step-flex" >
-          <div class="step-content">
-            {{i + 1}}. {{ step.value }}
-          </div>
-          <!-- important icon -->
-          <div 
-            v-show="step.isImportantStep"
-            class="important-icon mt-2">
-            <svg 
-              class="step-important-svg"  
-              xmlns="http://www.w3.org/2000/svg" 
-              viewBox="0 0 192 512">
-                <!-- Dynamic Styling of the ! icon fixed!!! vvvvv -->
-                <path 
-                  class="important-svg-path"
-                  fill="currentColor" 
-                  d="M176 432c0 44.112-35.888 80-80 80s-80-35.888-80-80 35.888-80 80-80 80 35.888 80 80zM25.26 25.199l13.6 272C39.499 309.972 50.041 320 62.83 320h66.34c12.789 0 23.331-10.028 23.97-22.801l13.6-272C167.425 11.49 156.496 0 142.77 0H49.23C35.504 0 24.575 11.49 25.26 25.199z">
-                </path>
-            </svg>
+          class="list-group-item">
+          <div class="step-flex">
+            <div class="step-content">
+              {{i + 1}}. {{ step.value }}
+            </div>
+            <!-- important icon -->
+            <div 
+              class="important-icon mt-2"
+              v-show="step.isImportantStep">
+              <app-important-svg
+                :important="step.isImportantStep"
+              ></app-important-svg>
+            </div>
+            <div class="complete-wrapper">
+              <input 
+                type="checkbox" 
+                class="complete-checkbox"
+                @click="toggleCompleted(i, _id)"
+                 >
+            </div>
           </div>
 
         </li>
@@ -43,28 +44,29 @@
 </template>
 
 <script>
+  import { eventBus } from '../main.js'
+
   import TaskList from './TaskList.vue'
+  import ImportantSVG from './svgs/ImportantSVG.vue'
   export default {
     data () {
       return {
 
       }
     },
-    computed: {
-      mediaQueries(){
-        return {
-          // 'details--mobile': this.$mq === 'mobile',
-          // 'details': !this.$mq === 'mobile',
-          // 'card-body--mobile': this.$mq === 'mobile',
-          // 'card-body': !this.mq === 'mobile'
-          // not quite finished! fix these! 
-        }
+    methods: {
+      toggleCompleted(i, id) {
+        eventBus.$emit('toggleStepCompleted', {i, id})
       }
     },
     props: {
+      _id: Number,
       due: String,
       contact: String,
       steps: Array,
+    },
+    components: {
+      'app-important-svg': ImportantSVG
     }
   }
 </script>
@@ -73,7 +75,7 @@
 
 .details {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr;
   grid-gap: 20px;
   padding: 1rem 0;
 }
@@ -103,16 +105,22 @@ li {
 }
 .step-content {
   font-size: 1.2rem;
+  flex: 23
+}
+.important-icon {
+  flex: 2;
+}
+.complete-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center; 
+}
+.complete-checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.step-important-svg {
-  height: 1.6rem;
-}
-.important-svg-path {
-  fill: #00D6A4;
-}
-
- .addtl-details-title {
+.addtl-details-title {
   background-color: #03D8CB;
   font-weight: 600;
   font-size: 1.2rem;
