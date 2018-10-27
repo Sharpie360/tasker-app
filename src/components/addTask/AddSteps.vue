@@ -75,7 +75,8 @@
             this.steps.push({
             value: '',
             isImportantStep: false,
-            isOptionalStep: false
+            isOptionalStep: false,
+            stepCompleted: false
           })
         } else if (this.steps[this.steps.length - 1].value === ''){
           console.log('empty string')
@@ -86,6 +87,7 @@
             value: '',
             isImportantStep: false,
             isOptionalStep: false,
+            stepCompleted: false
           })
         } 
       },
