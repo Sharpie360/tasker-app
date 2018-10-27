@@ -106,17 +106,33 @@
 
 [https://youtu.be/rJvHi7Bhau0]
 
+
+## 10/27/18
+
+### Extracted SVGS to cmps
+- module based for reusability
+
+### steps completed / task completed 
+- passing steps completed data thru custom event to task data
+- methods added
+- custom events added
+
+##### LIVESTREAMED
+
+[]
+
 ---
 ### Checklist
-[x] debug important step event.
-[ ] change contact to resources?
-[ ] additional details - card flush list
-[x] Steps list inputs
-[x] Set curser to pointer on hover for details
-[x] add details area for add task cmp
-[x] style details cmp
-[ ] add completed signification
-[.] style app with RabbitWerks colors?
+* [ ] fine tune styling <-----
+[*] debug important step event.
+* [ ] change contact to resources?
+* [ ] additional details - card flush list
+[*] Steps list inputs
+[*] Set curser to pointer on hover for details
+[*] add details area for add task cmp
+[*] style details cmp
+* [.] add completed signification
+* [.] style app with RabbitWerks colors?
     - brightGreen: #00D6A4
     - darkTurq: #006473
     - accTeal: #03D8CB
@@ -125,11 +141,12 @@
     - navbarBlack: #0a0a0a
     - fontColor: #f7f7f7
     
-### Progress: ||||||||||||||
+### Progress: |||||||||||||||||
 
 
 
 # todo
-
-* break out add steps to child cmp
-* break out svgs to own cmps
+ 
+-+ svgs into seperate cmps
+- work on additional details section
+-+ add complete functionality.
