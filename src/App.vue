@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import TaskList from './components/TaskList'
+import TaskList from './components/task-list/TaskList'
 import AddTask from './components/addTask/AddTask'
 
 export default {
@@ -31,6 +31,10 @@ export default {
 
 html {
   font-size: 20px;
+}
+
+.container {
+  max-width: 95%;
 }
 
 #app {
