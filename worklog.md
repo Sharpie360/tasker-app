@@ -119,7 +119,24 @@
 
 ##### LIVESTREAMED
 
-[]
+[https://youtu.be/X1rSUFlekKo]
+
+
+## 10/31/18
+
+### Extracted Additional Details to cmp
+- passing data in as props
+
+### steps completed / task completed 
+- completed logic for task based on steps
+- arr.every for checking
+
+### Editing task steps in taskDetails on DBLClick event
+- changes between a displaying div and text input div on click for editing
+
+##### LIVESTREAMED
+
+[https://youtu.be/F9yH8DM7hoA]
 
 ---
 ### Checklist
@@ -146,7 +163,17 @@
 
 
 # todo
- 
+
+- additional details to own cmp
+
+- if task complete, archive task btn
+- check all button
+- delete task button
+- edit additional details
+- edit mode for steps on double click
+
 -+ svgs into seperate cmps
 - work on additional details section
 -+ add complete functionality.
+
+- SET DATABASE UP!
