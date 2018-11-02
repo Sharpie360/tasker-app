@@ -28,17 +28,17 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:200,300,400,600,700');
 
 html {
   font-size: 20px;
 }
 
-.container {
+/* .container {
   max-width: 95%;
-}
-
+} */
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Titillium Web', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
