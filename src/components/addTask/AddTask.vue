@@ -1,6 +1,6 @@
 <template>
   <div class="input-control form-group mt-5">
-    <h3>Add Task</h3>
+    <h2 class="shadow-white">Add Task</h2>
     <input 
       type="text" 
       placeholder="new task title"
@@ -151,8 +151,8 @@
   justify-content: space-between
 }
 .add-details-expander {
-  font-size: 2rem;
-  margin: -.3rem 0 -.5rem 0;
+  font-size: 2.5rem;
+  margin: -1rem 0 -.5rem 0;
   cursor: pointer;
 }
 

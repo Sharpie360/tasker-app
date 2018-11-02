@@ -1,12 +1,12 @@
 <template>
   <div class="card">
-    <h5 class="card-header">Add Task Step
+    <h5 class="card-header steps-header">
+      <div class="steps-header-title">Add Task Step</div>
       <button 
-        class="btn btn-outline-primary py-1 px-3 float-right" 
+        class="btn btn-outline-primary py-1 px-3 add-steps-btn" 
         id="add-new-step-btn"
         @click="addStepToSteps"
       >Add Step</button>
-
     </h5>
     <div class="card-body p-0">
       <ul class="list-group list-group-flush" id="steps-list">
@@ -124,6 +124,15 @@
 
 <style>
 
+.steps-header {
+  display: flex;
+  align-items: center;
+}
+.steps-header-title {
+  flex: 1;
+}
+
+
 .step-group {
   display: flex;
   flex: 1;
@@ -141,7 +150,6 @@
   justify-content: space-evenly;
   align-items: center;
 }
-
 .actionBtn-icon {
   height: 1.5rem;
   width: 1.5rem;
