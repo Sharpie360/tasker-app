@@ -138,6 +138,14 @@
 
 [https://youtu.be/F9yH8DM7hoA]
 
+## 11/01/18
+
+### Global Styling
+- Add Task cmp group
+- - Additional Details cmp
+- Task List cmp group
+- font change
+
 ---
 ### Checklist
 * [ ] fine tune styling <-----
@@ -164,13 +172,13 @@
 
 # todo
 
-- additional details to own cmp
 
 - if task complete, archive task btn
 - check all button
 - delete task button
 - edit additional details
-- edit mode for steps on double click
+- progress bar based on steps completed?
+
 
 -+ svgs into seperate cmps
 - work on additional details section
