@@ -87,7 +87,7 @@
 
 .details {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 3fr 2fr;
   grid-gap: 20px;
   padding: 1rem 0;
 }
@@ -101,13 +101,14 @@
 li {
   list-style: none;
   border: 1px solid rgba(33, 33, 33, .4);
+  background-color: rgb(243, 243, 243);
 }
 .step-optional {
   background-color: rgba(0, 100, 115, .4);
 }
 .steps-title {
   background-color: #00D6A4;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.35rem;
 }
 .step-flex {

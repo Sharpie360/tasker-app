@@ -138,7 +138,6 @@
   .task-title-completed {
     text-decoration: line-through;
     text-decoration-color: rgb(100, 100, 100);
-
   }
 
   .task-header {
