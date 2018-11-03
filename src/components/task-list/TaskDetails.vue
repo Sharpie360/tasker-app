@@ -2,13 +2,30 @@
   <div class="details">
     <div class="details-steps">
       <ul class="list-group">
-        <li class="list-group-item steps-title">Task Steps</li>
+        <li class="list-group-item steps-title">
+          <div class="steps-title-text">Task Steps</div>
+          <div class="complete-wrapper">
+            <input 
+              type="checkbox" 
+              class="complete-checkbox task-checkbox"
+              @change="setTaskAsCompleted(_id)"
+              >
+          </div>
+        </li>
         <li 
           v-for="(step, i) in steps" 
           :key="step[i]" 
-          :class="{ 'step-optional': step.isOptionalStep }"
+          :class="{ 'step-optional': step.isOptionalStep, 'pl-1': step.isImportantStep }"
           class="list-group-item">
           <div class="step-flex">
+            <!-- important icon -->
+            <div 
+              class="important-icon mt-1"
+              v-show="step.isImportantStep">
+              <app-important-svg
+                :important="step.isImportantStep"
+              ></app-important-svg>
+            </div>
             <div 
               class="step-content" 
               @dblclick="step.editMode = true"
@@ -24,20 +41,13 @@
                 v-model="step.value"
                 autofocus>
             </div>
-            <!-- important icon -->
-            <div 
-              class="important-icon mt-2"
-              v-show="step.isImportantStep">
-              <app-important-svg
-                :important="step.isImportantStep"
-              ></app-important-svg>
-            </div>
+            
             <div class="complete-wrapper">
               <input 
                 type="checkbox" 
-                class="complete-checkbox"
-                @click="toggleCompleted(i, _id)"
-                 >
+                class="complete-checkbox step-checkbox"
+                @change="toggleStepCompleted(i, _id)"
+                :disabled="taskCompleted">
             </div>
           </div>
         </li>
@@ -64,13 +74,9 @@
       return {
       }
     },
-    methods: {
-      toggleCompleted(i, id) {
-        eventBus.$emit('toggleStepCompleted', {i, id})
-      },
-    },
     props: {
       _id: Number,
+      taskCompleted: Boolean,
       due: String,
       contact: String,
       steps: Array,
@@ -79,7 +85,27 @@
       'app-important-svg': ImportantSVG,
       'task-additional-details': AdditionalDetails
 
-    }
+    },
+    methods: {
+      toggleStepCompleted(i, id) {
+        eventBus.$emit('toggleStepCompleted', {i, id})
+      },
+      setTaskAsCompleted(id) {
+        const checkboxes = document.querySelectorAll
+        ('.step-checkbox')
+        checkboxes.forEach(checkbox => {
+          if(!this.taskCompleted){
+            checkbox.checked = true
+          } else {
+            checkbox.checked = false
+          }
+        })
+        this.steps.forEach(step => {
+          step.stepCompleted = !step.stepCompleted
+        });
+        eventBus.$emit('setTaskAsCompleted', id)
+      }
+    },
   }
 </script>
 
@@ -110,7 +136,14 @@ li {
   background-color: #00D6A4;
   font-weight: 400;
   font-size: 1.35rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+.steps-title-text {
+  flex: 23;
+}
+
 .step-flex {
   display: flex;
   justify-content: space-between;

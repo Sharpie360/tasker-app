@@ -6,21 +6,27 @@
         :key="task._id"
         :class="{ 'task-bg-completed': task.completed }"
         class="list-group-item task-group">
-        <div class="task-header">
-          <h3 :class="{ 'task-title-completed': task.completed }">
-            {{ task.task }}
-          </h3>
-        <img class="task-detail-expander expanded" 
-          @click="showDetails(task)"
-          src="../../assets/angle-left-solid.svg" alt="">
+        <div class="task-header-group">
+          <div class="task-header">
+            <h3 :class="{ 'task-title-completed': task.completed }">
+              {{ task.task }}
+            </h3>
+          <img class="task-detail-expander expanded" 
+            @click="showDetails(task)"
+            src="../../assets/angle-left-solid.svg" alt="">
+          </div>
+          <app-task-progress-bar :steps="task.details.steps"></app-task-progress-bar>
         </div>
-        <app-task-details 
-          v-if="task.task_detailsShown"
-          :_id="task._id" 
-          :due="task.details.due"
-          :contact="task.details.contact"
-          :steps="task.details.steps">
-        </app-task-details>
+        <keep-alive>
+          <app-task-details 
+            v-if="task.task_detailsShown"
+            :_id="task._id" 
+            :task-completed="task.completed"
+            :due="task.details.due"
+            :contact="task.details.contact"
+            :steps="task.details.steps">
+          </app-task-details>
+        </keep-alive>
         
       </li>
     </ul>
@@ -30,6 +36,7 @@
 <script>
   import { eventBus } from '../../main.js'
   import TaskDetails from './TaskDetails.vue'
+  import ProgressBar from './ProgressBar.vue'
 
   export default {
     data () {
@@ -74,6 +81,11 @@
         ]
       }
     },
+    components: {
+      'app-task-details': TaskDetails,
+      'app-task-progress-bar': ProgressBar
+    },
+
 
     methods: {
       showDetails(task) {
@@ -90,14 +102,13 @@
         checkIfComplete.push(...this.taskList[id].details.steps)
         if(checkIfComplete.every(step => step.stepCompleted === true)){
           this.taskList[id].completed = true
+          document.querySelector('.task-checkbox').checked = true
         } else {
           this.taskList[id].completed = false
+          document.querySelector('.task-checkbox').checked = false
         }
         
       }
-    },
-    components: {
-      'app-task-details': TaskDetails
     },
     created() {
       eventBus.$on('newTaskAdded', newTaskData => {
@@ -113,10 +124,13 @@
           completed: false
         })
       })
+      // receiving end of CE from TaskDetails
       eventBus.$on('toggleStepCompleted', indexID => {
-        //console.log('Step index = ', indexID.i)
-        //console.log('taskID = ', indexID.id)
         this.toggleStepCompleted(indexID.i, indexID.id)
+      })
+      // receiving end of CE from TaskDetails
+      eventBus.$on('setTaskAsCompleted', id => {
+        this.taskList[id].completed = !this.taskList[id].completed
       })
 
     }
@@ -137,7 +151,7 @@
   }
   .task-title-completed {
     text-decoration: line-through;
-    text-decoration-color: rgb(100, 100, 100);
+    text-decoration-color: rgb(255, 255, 255);
   }
 
   .task-header {
