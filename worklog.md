@@ -172,12 +172,15 @@
 
 # todo
 
+- completed tasks cmp
 
 - if task complete, archive task btn
-- check all button
+X check all button
 - delete task button
 - edit additional details
-- progress bar based on steps completed?
+X progress bar based on steps completed? YES!
+- - in task title header so we can see the progress 
+    of each task when they are collapsed. :)
 
 
 -+ svgs into seperate cmps
