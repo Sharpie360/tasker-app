@@ -16,7 +16,7 @@ This is a list of all the streaming sessions in chonological order with links to
 
 ### Episode 02
 **Video**  
-[https://www.youtube.com/watch?v=TKI3eUa-VDc]
+[https://www.youtube.com/watch?v=TKI3eUa-VDc]  
 **Focuses:**   
 - Styling Components in Vue
 - Task details object
