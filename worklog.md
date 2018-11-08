@@ -146,18 +146,34 @@
 - Task List cmp group
 - font change
 
+## 11/07/18
+
+### Completed Task List cmp
+- basic design finished, all data present
+- needs more styling
+- needs logic
+- major flexbox
+
+### App.vue Secondary Focus Area
+- Add Task && Completed Task cmps
+- headers are click events for true / false
+- flexbox
+
+##### LIVESTREAMED 
+[see youtube livestream episode list]
+
 ---
 ### Checklist
 * [ ] fine tune styling <-----
-[*] debug important step event.
+* [x] debug important step event.
 * [ ] change contact to resources?
-* [ ] additional details - card flush list
-[*] Steps list inputs
-[*] Set curser to pointer on hover for details
-[*] add details area for add task cmp
-[*] style details cmp
-* [.] add completed signification
-* [.] style app with RabbitWerks colors?
+* [x] additional details - card flush list
+* [x] Steps list inputs
+* [x] Set curser to pointer on hover for details
+* [x] add details area for add task cmp
+* [x] style details cmp
+* [x] add completed signification
+* [ ] style app with RabbitWerks colors?
     - brightGreen: #00D6A4
     - darkTurq: #006473
     - accTeal: #03D8CB
@@ -170,18 +186,16 @@
 
 
 
-# todo
+# Livestream Todo
 
-- completed tasks cmp
+* [x] completed tasks cmp
 
-- if task complete, archive task btn
-X check all button
-- delete task button
-- edit additional details
-X progress bar based on steps completed? YES!
-- - in task title header so we can see the progress 
-    of each task when they are collapsed. :)
+* [ ] if task complete, archive task btn
+* [ ] delete task button
+* [ ] edit additional details
 
+- add day completed property to finished tasks
+- debug progress bar
 
 -+ svgs into seperate cmps
 - work on additional details section
