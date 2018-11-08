@@ -81,11 +81,6 @@ a {
   flex: 1;
   justify-content: space-between;
 }
-#cmp--add-task {
 
-}
-#cmp--completed-task-list {
-
-}
 
 </style>
