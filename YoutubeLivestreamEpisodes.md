@@ -43,14 +43,53 @@ This is a list of all the streaming sessions in chonological order with links to
 - Custom Bootstrap4 theme  
 - Input Validation   
 - Flexbox and CSS Grid   
-- - [https://flexbox.io] [https://cssgrid.io]  
+- - [https://flexbox.io]  
+- - [https://cssgrid.io]  
 
 
 ### Episode 05
 **Video**  
 [https://youtu.be/DFvKSjZDYxQ]  
 **Focuses:**   
-- SVG transforms  
+- SVG transforms / click events  
 - breaking out additional details to its own cmp.  
 - Custom Events  
 - Custom Bootstrap4 theme  
+
+
+### Episode 06
+**Video**  
+[https://youtu.be/DFvKSjZDYxQ]  
+**Focuses:**   
+- SVG transforms / click events  
+- breaking out additional details to its own cmp.  
+- Custom Events  
+- Custom Bootstrap4 theme  
+- - [https://pikock.github.io/bootstrap-magic/]  
+
+
+### Episode 07
+**Video**  
+[https://youtu.be/rJvHi7Bhau0]  
+**Focuses:**   
+- Custom Events  
+- Refactoring to Child Components  
+- Passing Props  
+- Local Storage / local DB?  
+
+
+### Episode 08
+**Video**  
+[https://youtu.be/X1rSUFlekKo]  
+**Focuses:**   
+- coming soon!  
+
+
+### Episode 09
+*halloween edition*
+**Video**  
+[https://youtu.be/X1rSUFlekKo]  
+**Focuses:**   
+- Completed Logic
+- Custom Validation Checking
+- Custom Events
