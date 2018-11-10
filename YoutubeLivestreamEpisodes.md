@@ -21,4 +21,36 @@ This is a list of all the streaming sessions in chonological order with links to
 - Styling Components in Vue
 - Task details object
 - V-directives like bind, on, show, and model
-- troubleshooting bugs that aren't there!!!
+
+
+
+### Episode 03
+**Video**  
+[https://youtu.be/yLu2OWiqwMY]  
+**Focuses:**   
+- Task details object  
+- Step Options  
+- Custom Events  
+- Custom Bootstrap4 theme  
+
+
+### Episode 04
+**Video**  
+[https://youtu.be/UrUeqC25WYY]  
+**Focuses:**   
+- Task details object  
+- Custom Events  
+- Custom Bootstrap4 theme  
+- Input Validation   
+- Flexbox and CSS Grid   
+- - [https://flexbox.io] [https://cssgrid.io]  
+
+
+### Episode 05
+**Video**  
+[https://youtu.be/DFvKSjZDYxQ]  
+**Focuses:**   
+- SVG transforms  
+- breaking out additional details to its own cmp.  
+- Custom Events  
+- Custom Bootstrap4 theme  
