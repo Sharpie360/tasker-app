@@ -1,6 +1,6 @@
 <template>
     <svg 
-      class="step-optional-svg" 
+      class="step-optional-svg pointer" 
       xmlns="http://www.w3.org/2000/svg" 
       viewBox="0 0 384 512"
       >
@@ -29,7 +29,7 @@
     fill: #000;
     transition: fill 0.1s ease-in-out;
   }
-  .step-optional-svg .optional-true {
+  .optional-svg-path.optional-true {
     fill: #006473;
   }
 </style>
