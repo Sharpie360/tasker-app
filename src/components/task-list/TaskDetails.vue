@@ -37,7 +37,7 @@
               v-show="step.editMode">
               <input 
                 type="text"  
-                @blur="step.editMode = false"
+                @blur="saveNewValueOfEditedStep(step)"
                 v-model="step.value"
                 autofocus>
             </div>
@@ -101,9 +101,17 @@
           }
         })
         this.steps.forEach(step => {
-          step.stepCompleted = !step.stepCompleted
+          if(!this.taskCompleted){
+            step.stepCompleted = true
+          } else {
+            step.stepCompleted = false
+          }
         });
         eventBus.$emit('setTaskAsCompleted', id)
+      },
+      saveNewValueOfEditedStep(step){
+        step.editMode = false
+        eventBus.$emit('updateLS')
       }
     },
   }
