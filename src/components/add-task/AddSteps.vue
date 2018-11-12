@@ -3,7 +3,7 @@
     <h5 class="card-header steps-header">
       <div class="steps-header-title">Add Task Step</div>
       <button 
-        class="btn btn-outline-primary py-1 px-3 add-steps-btn" 
+        class="btn btn-outline-primary py-1 px-3 add-steps-btn pointer" 
         id="add-new-step-btn"
         @click="addStepToSteps"
       >Add Step</button>
@@ -35,13 +35,15 @@
               <div 
                 @click="setAsOptionalStep(i)"
                 class="action-btn-outer">
-                <app-optional-svg></app-optional-svg>
+                <app-optional-svg
+                  :optional="steps[i].isOptionalStep">
+                </app-optional-svg>
               </div>
                 
               <img 
                 src="../../assets/times-solid.svg" 
                 alt="icon button delete step" 
-                class="actionBtn actionBtn-icon step-remove"
+                class="actionBtn actionBtn-icon step-remove pointer"
                 @click="deleteStep(i)"
               >
             </div>
@@ -75,6 +77,7 @@
         if(this.steps.length === 0){
             this.steps.push({
             value: '',
+            editMode: false,
             isImportantStep: false,
             isOptionalStep: false,
             stepCompleted: false
@@ -88,6 +91,7 @@
         } else {
           this.steps.push({
             value: '',
+            editMode: false,
             isImportantStep: false,
             isOptionalStep: false,
             stepCompleted: false
