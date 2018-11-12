@@ -162,6 +162,30 @@
 ##### LIVESTREAMED 
 [see youtube livestream episode list]
 
+
+## 11/11/18
+
+### Debugged Progress Bar
+- Changed from toggle TF to conditional check
+
+### SVG Transitions
+- Broke out expander to own cmp
+- rotate condition passed in via props
+
+### Added pointer class to action items
+
+### Local Storage set up
+- saves on 
+- - add task
+- - update step
+- - delete task
+
+### EditMode for New Tasks
+- fixed, needed editMode property on instanciation
+
+### Delete Task 
+- button added with logic
+
 ---
 ### Checklist
 * [ ] fine tune styling <-----
@@ -188,17 +212,22 @@
 
 # Livestream Todo
 
+* [x] Debug progress bar
+* [x] show hide details svg transform
+* [x] local storage! then db
+
+- check caching
+- check add task with no steps error
+
+
 * [x] completed tasks cmp
 
 * [ ] if task complete, archive task btn
-* [ ] delete task button
+* [x] delete task button
 * [ ] edit additional details
 
 - add day completed property to finished tasks
-- debug progress bar
 
 -+ svgs into seperate cmps
-- work on additional details section
--+ add complete functionality.
 
 - SET DATABASE UP!
