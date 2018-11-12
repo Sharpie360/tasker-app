@@ -200,33 +200,31 @@
 * [x] add details area for add task cmp
 * [x] style details cmp
 * [x] add completed signification
-* [ ] style app with RabbitWerks colors?
-    - brightGreen: #00D6A4
-    - darkTurq: #006473
-    - accTeal: #03D8CB
-    - mainTurq: #03A9AC
-    - backgroundGrey: #212121
-    - navbarBlack: #0a0a0a
-    - fontColor: #f7f7f7
-    
-### Progress: |||||||||||||||||
-
-
-
-# Livestream Todo
-
 * [x] Debug progress bar
 * [x] show hide details svg transform
 * [x] local storage! then db
+* [x] delete task button
+* [x] completed tasks cmp
+* [ ] style app with RabbitWerks colors?
+
+### RabbitWerks Colors
+- brightGreen: #00D6A4  
+- darkTurq: #006473  
+- accTeal: #03D8CB  
+- mainTurq: #03A9AC  
+- backgroundGrey: #212121  
+- navbarBlack: #0a0a0a  
+- fontColor: #f7f7f7  
+    
+### Progress: ||||||||||||||||||||||||||||||
+----
+# Livestream Todo
 
 - check caching
 - check add task with no steps error
-
-
-* [x] completed tasks cmp
+- fix checked attr bug
 
 * [ ] if task complete, archive task btn
-* [x] delete task button
 * [ ] edit additional details
 
 - add day completed property to finished tasks
