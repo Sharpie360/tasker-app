@@ -36,7 +36,7 @@
       <div id="add-task-btn-div" class="mt-3">
         <button 
           id="add" 
-          class="btn btn-info"
+          class="btn btn-info pointer"
           @click="addNewTask()">
           <h5 class="mb-0">Add New Task</h5>
         </button>
@@ -114,6 +114,7 @@
           this.newTask.contact = ''
           this.newTask.steps = []
           this.newTask.addDetails_detailsShown = false
+          eventBus.$emit('updateLS')
         }
       },
       showAddDetailsCmp(){
