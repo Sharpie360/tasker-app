@@ -11,9 +11,14 @@
             <h3 :class="{ 'task-title-completed': task.completed }">
               {{ task.task }}
             </h3>
-          <img class="task-detail-expander expanded" 
+            <div class="" @click="showDetails(task)">
+              <app-expander-svg
+                :isExpanded="task.task_detailsShown">
+              </app-expander-svg>
+            </div>
+          <!-- <img class="task-detail-expander expanded" 
             @click="showDetails(task)"
-            src="../../assets/angle-left-solid.svg" alt="">
+            src="../../assets/angle-left-solid.svg" alt=""> -->
           </div>
           <app-task-progress-bar :steps="task.details.steps"></app-task-progress-bar>
         </div>
@@ -27,7 +32,11 @@
             :steps="task.details.steps">
           </app-task-details>
         </keep-alive>
-        
+        <button 
+          @click="deleteTask(task)"
+          class="btn btn-danger">
+            Delete Task
+        </button>
       </li>
     </ul>
   </div>
@@ -37,6 +46,10 @@
   import { eventBus } from '../../main.js'
   import TaskDetails from './TaskDetails.vue'
   import ProgressBar from './ProgressBar.vue'
+  import ExpanderSVG from '../svgs/ExpanderSVG.vue'
+
+
+
 
   export default {
     data () {
@@ -77,13 +90,14 @@
               ]
             } 
           },
-         
-        ]
+        ],
+
       }
     },
     components: {
       'app-task-details': TaskDetails,
-      'app-task-progress-bar': ProgressBar
+      'app-task-progress-bar': ProgressBar,
+      'app-expander-svg': ExpanderSVG
     },
 
 
@@ -107,10 +121,28 @@
           this.taskList[id].completed = false
           document.querySelector('.task-checkbox').checked = false
         }
-        
+      },
+      deleteTask(task){
+        if(confirm(`Are you sure you want to delete this task? Task: ${task.task}`)) {
+          this.taskList.splice(task._id, 1)
+          this.saveToLocalStorage()
+        }
+      },
+      saveToLocalStorage(){
+        const taskData = JSON.stringify(this.taskList)
+        console.log('data is ', taskData)
+        localStorage.setItem('task-data', taskData)
       }
     },
     created() {
+      if(localStorage.getItem('task-data')){
+        this.taskList = JSON.parse(localStorage.getItem('task-data'))
+      } else {
+        console.log('no data found....')
+        return
+      }
+    },
+    mounted() {
       eventBus.$on('newTaskAdded', newTaskData => {
         this.taskList.push({
           _id: this.taskList.length,
@@ -131,6 +163,10 @@
       // receiving end of CE from TaskDetails
       eventBus.$on('setTaskAsCompleted', id => {
         this.taskList[id].completed = !this.taskList[id].completed
+      })
+      // save tasklist to local storage CE listener
+      eventBus.$on('updateLS', () => {
+        this.saveToLocalStorage()
       })
 
     }
@@ -159,13 +195,6 @@
     flex: 1;
     justify-content: space-between;
     align-items: center;
-  }
-  .task-detail-expander {
-    cursor: pointer; 
-    height: 2.5rem;
-  }
-  .task-detail-expander .expanded {
-    transform: rotate(-90deg)
   }
 
   h3 {
