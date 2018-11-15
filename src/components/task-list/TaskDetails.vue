@@ -1,5 +1,5 @@
 <template>
-  <div class="details">
+  <div class="details pt-0">
     <div class="details-steps">
       <ul class="list-group">
         <li class="list-group-item steps-title">
@@ -47,6 +47,7 @@
                 type="checkbox" 
                 class="complete-checkbox step-checkbox"
                 @change="toggleStepCompleted(i, _id)"
+                :checked="step.stepCompleted"
                 :disabled="taskCompleted">
             </div>
           </div>
@@ -91,15 +92,6 @@
         eventBus.$emit('toggleStepCompleted', {i, id})
       },
       setTaskAsCompleted(id) {
-        const checkboxes = document.querySelectorAll
-        ('.step-checkbox')
-        checkboxes.forEach(checkbox => {
-          if(!this.taskCompleted){
-            checkbox.checked = true
-          } else {
-            checkbox.checked = false
-          }
-        })
         this.steps.forEach(step => {
           if(!this.taskCompleted){
             step.stepCompleted = true
