@@ -1,22 +1,29 @@
 <template>
-  <div id="app" class="container mb-5">
-    <h1 class="display-4 shadow-white">RabbitWerks Tasker</h1>
-
-    <app-task-list></app-task-list>
+  <div id="app" class="container mb-5 pt-4">
+    <h1 class="display-4 shadow-white mb-4">RabbitWerks Tasker</h1>
+    
+    <app-add-task></app-add-task>
 
     <div id="secondary-focus-cmp-titles" class="mt-4">
-      <h2 class="shadow-white pointer" @click="showCompletedTasksCmp = false">Add Task</h2>
-      <h2 class="shadow-white pointer" @click="showCompletedTasksCmp = true">Completed</h2>
+      <h2 
+        class="shadow-white pointer" @click="showCompletedTasksCmp = false">Current Tasks
+      </h2>
+      <h2 
+        class="shadow-white pointer" @click="showCompletedTasksCmp = true">Completed
+      </h2>
     </div>
+
     <div class="secondary-focus-cmps">
-      <app-add-task  
-        :showCompletedTasksCmp="showCompletedTasksCmp">
-      </app-add-task>
-      
+
+      <app-task-list  
+        :showCompletedTasksCmp="!showCompletedTasksCmp">
+      </app-task-list>
+
       <app-completed-task-list 
         id="cmp--completed-task-list"
         :showCompletedTasksCmp="showCompletedTasksCmp">
       </app-completed-task-list>
+
     </div>
 
 
@@ -26,8 +33,8 @@
 
 <script>
 import TaskList from './components/task-list/TaskList'
-import AddTask from './components/add-task/AddTask'
 import CompletedTaskList from './components/completed-tasks/CompletedTaskList'
+import AddTask from './components/add-task/AddTask'
 
 export default {
   name: 'app',
@@ -38,8 +45,8 @@ export default {
   },
   components: {
     'app-task-list': TaskList,
+    'app-completed-task-list': CompletedTaskList,
     'app-add-task': AddTask,
-    'app-completed-task-list': CompletedTaskList
   },
   methods: {
     
