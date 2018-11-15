@@ -1,5 +1,5 @@
 <template>
-  <div class="progress mt-2">
+  <div class="progress mt-2 mb-3">
     <div 
       class="progress-bar bg-danger" 
       role="progressbar"
@@ -21,7 +21,7 @@ export default {
       this.steps.forEach(step => {
         if(step.stepCompleted) {
           numOfStepsCompleted++
-          console.log(numOfStepsCompleted)
+          // console.log(numOfStepsCompleted)
         }
       })
       if(numOfStepsCompleted === this.steps.length){
