@@ -29,6 +29,7 @@
                 v-on:click="setAsImportantStep(i)"
                 class="action-btn-outer">
                 <app-important-svg 
+                  class="pointer"
                   :important="steps[i].isImportantStep">
                 </app-important-svg>
               </div>
@@ -100,11 +101,15 @@
       },
       // send steps array to tasklist steps array
       submitSteps(){
-        if (this.steps[this.steps.length - 1].value === '') {
-          this.steps.pop()
+        if(this.steps.length > 0){
+          if (this.steps[this.steps.length - 1].value === '') {
+            this.steps.pop()
+          }
+          eventBus.$emit('updatedSteps', this.steps)
+          this.steps = []
+        } else {
+          return
         }
-        eventBus.$emit('updatedSteps', this.steps)
-        this.steps = []
       },
       // toggle important property for step[i]
       setAsImportantStep(i){
