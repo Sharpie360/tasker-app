@@ -2,8 +2,11 @@
   <div>
     <div class="card display-wrapper" v-show="showCompletedTasksCmp">
       <ul class="list-group">
-        <li class="list-group-item">
-          <h3>{{ completedTaskList[0].task }}</h3>
+        <li 
+          v-for="(task, taskIndex) in completedTaskList"
+          :key="taskIndex"
+          class="list-group-item">
+          <h3>{{ task.task }}</h3>
           <div class="card">
             <div class="card-body">
               <h5 class="flexbox-space-between">
@@ -13,7 +16,7 @@
               <ul class="list-group list-group-flush mt-2">
                 <li 
                   class="list-group-item py-2 flexbox-space-between" 
-                  v-for="(step, i) in completedTaskList[0].details.steps" 
+                  v-for="(step, i) in task.details.steps" 
                   :key="i">
                   <span>{{ step.value }}</span> 
                   <span>{{ step.isImportantStep }}</span>
@@ -22,10 +25,10 @@
               <div class="card-header">
                 <div class="flexbox-space-between">
                   <h6 class="mb-0"> 
-                    Date Due: {{ completedTaskList[0].details.due }}
+                    Date Due: {{ task.details.due }}
                   </h6> 
                   <h6 class="mb-0">
-                    Date Completed: {{ completedTaskList[0].completedDate }}
+                    Date Completed: {{ task.completedDate }}
                   </h6>
                 </div>
               </div>
@@ -38,6 +41,7 @@
 </template>
 
 <script>
+import { eventBus } from '../../main.js'
 export default {
   data () {
     return {
@@ -80,7 +84,13 @@ export default {
       ]
     }
   },
-  props: ['showCompletedTasksCmp']
+  props: ['showCompletedTasksCmp'],
+  mounted() {
+    eventBus.$on('sendTaskToCompletedList', task => {
+      console.log(task)
+      this.completedTaskList.push(task)
+    })
+  }
 }
 </script>
 
