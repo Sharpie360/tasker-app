@@ -1,8 +1,11 @@
 <template>
-  <div class="card">
+
+  <div 
+    class="card display-wrapper"
+    v-show="showCompletedTasksCmp">
     <ul class="list-group">
       <li 
-        v-for="task in taskList" 
+        v-for="(task, i) in taskList" 
         :key="task._id"
         :class="{ 'task-bg-completed': task.completed }"
         class="list-group-item task-group">
@@ -16,12 +19,13 @@
                 :isExpanded="task.task_detailsShown">
               </app-expander-svg>
             </div>
-          <!-- <img class="task-detail-expander expanded" 
-            @click="showDetails(task)"
-            src="../../assets/angle-left-solid.svg" alt=""> -->
           </div>
-          <app-task-progress-bar :steps="task.details.steps"></app-task-progress-bar>
+
+          <app-task-progress-bar 
+            :steps="task.details.steps">
+          </app-task-progress-bar>
         </div>
+
         <keep-alive>
           <app-task-details 
             v-if="task.task_detailsShown"
@@ -32,11 +36,11 @@
             :steps="task.details.steps">
           </app-task-details>
         </keep-alive>
-        <button 
-          @click="deleteTask(task)"
-          class="btn btn-danger">
-            Delete Task
-        </button>
+
+        <app-task-manage-buttons
+          :task="task" :i="i">
+        </app-task-manage-buttons>
+
       </li>
     </ul>
   </div>
@@ -44,9 +48,10 @@
 
 <script>
   import { eventBus } from '../../main.js'
-  import TaskDetails from './TaskDetails.vue'
-  import ProgressBar from './ProgressBar.vue'
   import ExpanderSVG from '../svgs/ExpanderSVG.vue'
+  import ProgressBar from './ProgressBar.vue'
+  import TaskDetails from './TaskDetails.vue'
+  import ManageButtons from './ManageButtons.vue'
 
 
 
@@ -95,12 +100,12 @@
       }
     },
     components: {
-      'app-task-details': TaskDetails,
+      'app-expander-svg': ExpanderSVG,
       'app-task-progress-bar': ProgressBar,
-      'app-expander-svg': ExpanderSVG
+      'app-task-details': TaskDetails,
+      'app-task-manage-buttons': ManageButtons
     },
-
-
+    props: ['showCompletedTasksCmp'],
     methods: {
       showDetails(task) {
         task.task_detailsShown = !task.task_detailsShown
@@ -122,11 +127,8 @@
           document.querySelector('.task-checkbox').checked = false
         }
       },
-      deleteTask(task){
-        if(confirm(`Are you sure you want to delete this task? Task: ${task.task}`)) {
-          this.taskList.splice(task._id, 1)
-          this.saveToLocalStorage()
-        }
+      archiveTask(i){
+        console.log('hello task')
       },
       saveToLocalStorage(){
         const taskData = JSON.stringify(this.taskList)
@@ -138,7 +140,7 @@
       if(localStorage.getItem('task-data')){
         this.taskList = JSON.parse(localStorage.getItem('task-data'))
       } else {
-        console.log('no data found....')
+        console.log('no data found....') 
         return
       }
     },
@@ -164,9 +166,19 @@
       eventBus.$on('setTaskAsCompleted', id => {
         this.taskList[id].completed = !this.taskList[id].completed
       })
+      // delete task CE from buttons cmp
+      eventBus.$on('deleteTask', index => {
+        this.taskList.splice(index, 1)
+        this.saveToLocalStorage()
+      })
       // save tasklist to local storage CE listener
       eventBus.$on('updateLS', () => {
         this.saveToLocalStorage()
+      })
+      eventBus.$on('archiveTask', index => {
+        this.archiveTask(index)
+        eventBus.$emit('sendTaskToCompletedList', this.taskList[index])
+        this.taskList.splice(index, 1)
       })
 
     }
