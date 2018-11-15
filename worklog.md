@@ -189,6 +189,23 @@
 ### Delete Task 
 - button added with logic
 
+
+## 11/14/18
+
+### Rearranged app
+- addTask on top
+- toggle current and completed tasks
+
+### Manage Buttons cmp
+- archive task
+- edit details
+- delete task
+
+### Bug Fixes
+- Empty Steps error
+- Checked Attr bug
+- Delete Task bug
+
 ---
 ### Checklist
 * [ ] fine tune styling <-----
@@ -220,14 +237,19 @@
 ----
 # Livestream Todo
 
-- check caching
-- check add task with no steps error
-- fix checked attr bug
+- NavBar?
 
-* [ ] if task complete, archive task btn
-* [ ] edit additional details
 
-- add day completed property to finished tasks
+### management buttons
+* [x] if task complete, archive task btn
+* [x] edit additional details
+
+* [ ] clear add task form btn
+* [ ] add day completed property to finished tasks
+* [ ] store completed tasks in LS too. 
+* [ ] set completed date on complete task
+
+* [ ] global counters???
 
 -+ svgs into seperate cmps
 
