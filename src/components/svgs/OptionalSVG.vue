@@ -26,7 +26,7 @@
     width: 1.75rem
   }
   .optional-svg-path {
-    fill: #000;
+    fill: rgba(0, 0, 0, .25);
     transition: fill 0.1s ease-in-out;
   }
   .optional-svg-path.optional-true {

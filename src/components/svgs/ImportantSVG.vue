@@ -1,6 +1,6 @@
 <template>
     <svg 
-      class="step-important-svg pointer"  
+      class="step-important-svg"  
       xmlns="http://www.w3.org/2000/svg" 
       viewBox="0 0 192 512">
         <!-- Dynamic Styling of the ! icon fixed!!! vvvvv -->
@@ -27,10 +27,10 @@
     width: 1.75rem
   }
   .important-svg-path {
-    fill: rgb(82, 82, 82);
+    fill: rgba(0, 0, 0, .25);
     transition: fill 0.1s ease-in-out;
   }
   .important-svg-path.important-true {
-    fill: rgb(180, 180, 180);
+    fill: rgba(0, 214, 164, 1);
   }
 </style>
