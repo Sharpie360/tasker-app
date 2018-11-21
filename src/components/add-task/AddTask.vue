@@ -1,13 +1,20 @@
 <template>
   <div class="input-control form-group mb-0">
     <h2 class="shadow-white">Add Task</h2>
-    <input 
-      type="text" 
-      placeholder="new task title"
-      id="addInput" 
-      class="form-control mb-3" 
-      v-model="newTask.task"
-    >
+    <div class="task-title-wrapper">
+      <input 
+        type="text" 
+        placeholder="new task title"
+        id="addInput" 
+        class="form-control mb-3 mr-3" 
+        v-model="newTask.task"
+      >
+      <button 
+        @click="clearForm"
+        class="btn btn-danger mb-3"
+        >Clear Form
+      </button>
+    </div>
     <div class="card">
       <h5 class="card-header add-details-header">Add Additional Details
         <span 
@@ -120,13 +127,19 @@
       showAddDetailsCmp(){
         this.newTask.addDetails_detailsShown = !this.newTask.addDetails_detailsShown
       },
+      clearForm(){
+        this.newTask.task = ''
+        this.newTask.due = ''
+        this.newTask.contact = ''
+        this.newTask.steps = []
+        eventBus.$emit('clearFormSteps')
+      },
       createAlert(tF, msg) {
-        const vm = this
         this.alertMsg.isAlert = true
         this.alertMsg.isSuccess = tF
         this.alertMsg.message = msg
         setTimeout(() => {
-          vm.alertMsg.isAlert = false
+          this.alertMsg.isAlert = false
         }, 3000)
       }
     },
@@ -147,6 +160,9 @@
 
 <style scoped>
 
+.task-title-wrapper {
+  display: flex;
+}
 
 .add-details-header {
   display: flex;
