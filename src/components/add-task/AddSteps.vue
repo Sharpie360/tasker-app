@@ -130,6 +130,9 @@
     // listens for event "grabSteps" from AddTask cmp
     created(){
       eventBus.$on('grabSteps', this.submitSteps)
+      eventBus.$on('clearFormSteps', () => {
+        this.steps = []
+      })
     }
   }
 </script>
