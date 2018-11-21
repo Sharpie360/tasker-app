@@ -19,7 +19,7 @@
                   v-for="(step, i) in task.details.steps" 
                   :key="i">
                   <span>{{ step.value }}</span> 
-                  <span>{{ step.isImportantStep }}</span>
+                  <span>{{ checkStepImportance(step) }}</span>
                 </li>
               </ul>
               <div class="card-header">
@@ -28,7 +28,7 @@
                     Date Due: {{ task.details.due }}
                   </h6> 
                   <h6 class="mb-0">
-                    Date Completed: {{ task.completedDate }}
+                    Date Completed: {{ task.details.completedDate }}
                   </h6>
                 </div>
               </div>
@@ -49,10 +49,10 @@ export default {
         { 
           _id: 0,
           task: "Work on Tasker App", 
-          completedDate: '11/6/18', 
           task_detailsShown: true,
           details: {
             due: '10/22/18',
+            completedDate: '11/6/18',
             contact: 'n/a' , 
             steps: [
               { 
@@ -85,12 +85,52 @@ export default {
     }
   },
   props: ['showCompletedTasksCmp'],
+  methods: {
+    getCurrentDate(){
+      const today = new Date();
+      const cleanedDate = today.toLocaleDateString()
+      return cleanedDate
+    },
+    checkStepImportance(step) {
+      let word = 'Normal';
+      if(step.isImportantStep && !step.isOptionalStep) {
+        word = 'Important'
+      } else if(!step.isImportantStep && step.isOptionalStep) {
+        word = 'Optional'
+      } else if (step.isImportantStep && step.isOptionalStep) {
+        word = 'Important/Optional'
+      }
+      return word
+    },
+    saveCompletedTaskListData() {
+      const completedTaskData = JSON.stringify(this.completedTaskList);
+      localStorage.setItem('completed-task-data', completedTaskData)
+    }
+  },
+  created() {
+    if(localStorage.getItem('completed-task-data')) {
+      console.log(localStorage.getItem('completed-task-data'))
+      this.completedTaskList = JSON.parse(localStorage.getItem('completed-task-data'))
+    } else {
+      console.log('no completed task data found...')
+    }
+  },
   mounted() {
     eventBus.$on('sendTaskToCompletedList', task => {
       console.log(task)
-      this.completedTaskList.push(task)
+      this.completedTaskList.push({
+        _id: task._id,
+        task: task.task,
+        details: {
+          due: task.details.due,
+          completedDate: this.getCurrentDate(),
+          contact: task.details.contact,
+          steps: task.details.steps
+        }
+      })
+      this.saveCompletedTaskListData()
     })
-  }
+  },
 }
 </script>
 
