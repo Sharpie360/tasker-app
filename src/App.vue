@@ -6,10 +6,14 @@
 
     <div id="secondary-focus-cmp-titles" class="mt-4">
       <h2 
-        class="shadow-white pointer" @click="showCompletedTasksCmp = false">Current Tasks
+        class="shadow-white pointer hoverfx" 
+        :class="{ 'current-cmp-highlight': !showCompletedTasksCmp }"
+        @click="showCompletedTasksCmp = false">Current Tasks
       </h2>
       <h2 
-        class="shadow-white pointer" @click="showCompletedTasksCmp = true">Completed
+        class="shadow-white pointer hoverfx" 
+        :class="{ 'current-cmp-highlight': showCompletedTasksCmp }"
+        @click="showCompletedTasksCmp = true">Completed
       </h2>
     </div>
 
@@ -89,5 +93,12 @@ a {
   justify-content: space-between;
 }
 
+.hoverfx:hover {
+  color: #0a0a0a;
+}
+
+.current-cmp-highlight {
+  color: #212121;
+}
 
 </style>
