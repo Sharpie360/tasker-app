@@ -54,7 +54,11 @@
   import ManageButtons from './ManageButtons.vue'
 
 
-
+  function formatDate(date) {
+    const newDate = new Date(date)
+    const formattedDate = newDate.toLocaleDateString()
+    return formattedDate
+  }
 
   export default {
     data () {
@@ -151,7 +155,7 @@
           task: newTaskData.task,
           task_detailsShown: false,
           details: {
-            due: newTaskData.due,
+            due: formatDate(newTaskData.due),
             contact: newTaskData.contact,
             steps: newTaskData.steps
           },
@@ -179,6 +183,7 @@
         this.archiveTask(index)
         eventBus.$emit('sendTaskToCompletedList', this.taskList[index])
         this.taskList.splice(index, 1)
+        this.saveToLocalStorage()
       })
 
     }
