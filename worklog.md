@@ -206,6 +206,27 @@
 - Checked Attr bug
 - Delete Task bug
 
+
+## 11/20/18
+
+### Clear Task Form 
+- button added
+- custom event emitted to child to clear steps
+
+### Set Current Date of Completion
+- formatted dates
+
+### Set Importance Display Word
+- checks if important, optional, both, or neither
+
+### Saving Completed Task List to LS
+- save on new completed task pushed
+- load complete tasks from LS
+
+### Started Global Counter Store
+- Vuex principals
+- vue instance
+
 ---
 ### Checklist
 * [ ] fine tune styling <-----
@@ -222,6 +243,16 @@
 * [x] local storage! then db
 * [x] delete task button
 * [x] completed tasks cmp
+* [x] if task complete, archive task btn
+* [x] edit additional details
+* [x] clear add task form btn
+* [x] add day completed property to finished tasks
+* [x] set completed date on complete task
+* [x] store completed tasks in LS too. 
+* [x] display if important or optional or both for completed task steps.
+
+
+
 * [ ] style app with RabbitWerks colors?
 
 ### RabbitWerks Colors
@@ -238,18 +269,13 @@
 # Livestream Todo
 
 - NavBar?
+* [ ] styles for if completed on time or late
+* [ ] methods for Counter Store
+* [ ] Media Queries!
+* [ ] delete step to SVG
+* [ ] accessibility for action buttons
+* [ ] hover tool tips??
 
-
-### management buttons
-* [x] if task complete, archive task btn
-* [x] edit additional details
-
-* [ ] clear add task form btn
-* [ ] add day completed property to finished tasks
-* [ ] store completed tasks in LS too. 
-* [ ] set completed date on complete task
-
-* [ ] global counters???
 
 -+ svgs into seperate cmps
 
