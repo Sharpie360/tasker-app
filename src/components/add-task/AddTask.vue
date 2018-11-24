@@ -180,20 +180,11 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
 }
-/* .grid--mobile {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-    /* not quite finished! fix these! *
-} */
+
 
 #add-new-step-btn {
   font-size: .9rem;
 }
-
-
-
-
 
 #add-task-btn-div {
   display: flex;
@@ -201,6 +192,17 @@
 
 #alert-box {
   flex: 1;
+}
+
+
+
+
+@media screen and (max-width: 480px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0rem;
+  }
 }
 
 </style>
