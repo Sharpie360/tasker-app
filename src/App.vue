@@ -1,8 +1,13 @@
 <template>
-  <div id="app" class="container mb-5 pt-4">
-    <h1 class="display-4 shadow-white mb-4">RabbitWerks Tasker</h1>
+  <div id="app" class="container mb-5 pt-3">
+    <h1 
+      id="app-title" 
+      class="display-4 shadow-white mb-0"
+      >RabbitWerks Tasker
+    </h1>
+    <hr>
     
-    <app-add-task></app-add-task>
+    <app-add-task class="mt-4"></app-add-task>
 
     <div id="secondary-focus-cmp-titles" class="mt-4">
       <h2 
@@ -80,6 +85,8 @@ html {
   padding-top: 60px;
 }
 
+
+
 .shadow-white {
   text-shadow: 1px 1px 3px rgba(247, 247, 247, .75);
 }
@@ -99,6 +106,16 @@ a {
 
 .current-cmp-highlight {
   color: #212121;
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 16px;
+  }
+
+  #app-title {
+    font-size: 2.8rem;
+  }
 }
 
 </style>
