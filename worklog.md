@@ -227,6 +227,18 @@
 - Vuex principals
 - vue instance
 
+
+## 11/23/18
+
+### Edit Details Feature
+- part 1 - trigger editmode from manage buttons cmp CE
+- part 2 - edit values with inputs, conditionall show
+- part 3 - send updated details to TaskList cmp with source data using CE
+
+### Media Queries
+- TaskDetails mobile responsive
+- Add Task input mobile responsive
+
 ---
 ### Checklist
 * [ ] fine tune styling <-----
@@ -250,6 +262,7 @@
 * [x] set completed date on complete task
 * [x] store completed tasks in LS too. 
 * [x] display if important or optional or both for completed task steps.
+* [x] edit details 
 
 
 
@@ -269,10 +282,17 @@
 # Livestream Todo
 
 - NavBar?
+* [x] Media Queries!
+  * [ ] Fix Add step styling
+  * [ ] completed task styling
 * [ ] styles for if completed on time or late
 * [ ] methods for Counter Store
-* [ ] Media Queries!
 * [ ] delete step to SVG
+
+
+- Set up mixin for formatDate Fn
+- debug date object minus day thing
+
 * [ ] accessibility for action buttons
 * [ ] hover tool tips??
 
