@@ -4,19 +4,87 @@
     <div class="card-body">
       <div class="addtl-details-group">
         <span class="addtl-details-label">Contact Info:</span>
-        <div class="addtl-details-content alert alert-info py-1 pl-3 mb-2">{{ contact }}</div>
+        <div 
+          v-show="!editMode"
+          class="
+            addtl-details-content 
+            alert 
+            alert-info 
+            py-1 pl-3 mb-2"
+          >{{ contact }}</div>
+        <input 
+          v-show="editMode"
+          v-model="newContactInfo"
+          type="text" 
+          class="form-control" 
+        >
       </div>
       <div class="addtl-details-group">
         <span class="addtl-details-label">Due Date:</span>
-        <div class="addtl-details-content alert alert-info py-1 pl-3 mb-2">{{ due }}</div>
+        <div 
+          v-show="!editMode"
+          class="
+            addtl-details-content 
+            alert 
+            alert-info 
+            py-1 pl-3 mb-2"
+          >{{ due }}</div>
+        <input 
+          v-show="editMode"
+          v-model="newDueDate"
+          
+          type="date" 
+          class="form-control">
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { eventBus } from '../../main.js'
+
+function formatDate(date) {
+  const newDate = new Date(date)
+  const formattedDate = newDate.toLocaleDateString()
+  return formattedDate
+}
+
+function changeFormatForDatePicker(date){
+  const newDate = new Date(date)
+  const year = newDate.getFullYear()
+  const month = (newDate.getUTCMonth() + 1)
+  const day = (newDate.getUTCDate())
+  
+  return `${year}-${month}-${day}`
+}
+
 export default {
-  props: ['due', 'contact']
+  data () {
+    return {
+      newContactInfo: this.contact,
+      newDueDate: changeFormatForDatePicker(this.due),
+      editMode: false
+    }
+  },
+  props: ['_id', 'due', 'contact'],
+  created() {
+    eventBus.$on('editDetailsCE', () => {
+      this.editMode = true
+      changeFormatForDatePicker(this.due)
+    })
+    eventBus.$on('saveEditsCE', () => {
+      const newDetails = {
+        _id: this._id,
+        newContact: this.newContactInfo,
+        newDue: this.newDueDate 
+      }
+      eventBus.$emit('updateNewDetails', newDetails)
+      this.editMode = false
+    })
+  },
+  methods: {
+
+  }
 }
 </script>
 
@@ -34,7 +102,6 @@ export default {
 .card {
   border: 1px solid rgba(33, 33, 33, .4);
 }
-
 
 
 </style>
