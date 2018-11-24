@@ -179,13 +179,20 @@
       eventBus.$on('updateLS', () => {
         this.saveToLocalStorage()
       })
+      // archive completed task, send to completedtaskcmp then update LS 
       eventBus.$on('archiveTask', index => {
         this.archiveTask(index)
         eventBus.$emit('sendTaskToCompletedList', this.taskList[index])
         this.taskList.splice(index, 1)
         this.saveToLocalStorage()
       })
-
+      // update additional details receiving CE
+      eventBus.$on('updateNewDetails', newDetails => {
+        console.log(newDetails)
+        this.taskList[newDetails._id].details.contact = newDetails.newContact
+        this.taskList[newDetails._id].details.due = formatDate(newDetails.newDue)
+        this.saveToLocalStorage()
+      })
     }
   }
 </script>
