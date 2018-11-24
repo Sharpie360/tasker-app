@@ -56,6 +56,7 @@
     </div>
     
     <task-additional-details 
+      :_id="_id"
       :due="due" 
       :contact="contact">
     </task-additional-details>
@@ -111,18 +112,13 @@
 
 <style scoped>
 
+
 .details {
   display: grid;
   grid-template-columns: 3fr 2fr;
   grid-gap: 20px;
   padding: 1rem 0;
 }
-/* .details--mobile {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 1rem;
-  /* not quite finished! fix these! *
-} */
 
 li {
   list-style: none;
@@ -173,9 +169,18 @@ li {
   height: 1.5rem;
 }
 
-
-
 .card-body--mobile {
   padding: 0;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 480px){
+  .details {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;  
+  }
 }
 </style>
