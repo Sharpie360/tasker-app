@@ -121,7 +121,6 @@
           this.newTask.contact = ''
           this.newTask.steps = []
           this.newTask.addDetails_detailsShown = false
-          eventBus.$emit('updateLS')
         }
       },
       showAddDetailsCmp(){
