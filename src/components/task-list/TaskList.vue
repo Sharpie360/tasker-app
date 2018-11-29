@@ -48,6 +48,7 @@
 
 <script>
   import { eventBus } from '../../main.js'
+  import { store } from '../../store.js'
   import ExpanderSVG from '../svgs/ExpanderSVG.vue'
   import ProgressBar from './ProgressBar.vue'
   import TaskDetails from './TaskDetails.vue'
@@ -100,7 +101,6 @@
             } 
           },
         ],
-
       }
     },
     components: {
@@ -110,6 +110,11 @@
       'app-task-manage-buttons': ManageButtons
     },
     props: ['showCompletedTasksCmp'],
+    computed: {
+      tasklistLength() {
+        return this.taskList.length
+      }
+    },
     methods: {
       showDetails(task) {
         task.task_detailsShown = !task.task_detailsShown
@@ -161,6 +166,9 @@
           },
           completed: false
         })
+        this.saveToLocalStorage()
+        // store
+        store.updateNum_CurrentTasks(this.tasklistLength)
       })
       // receiving end of CE from TaskDetails
       eventBus.$on('toggleStepCompleted', indexID => {
@@ -174,10 +182,13 @@
       eventBus.$on('deleteTask', index => {
         this.taskList.splice(index, 1)
         this.saveToLocalStorage()
+        store.updateNum_CurrentTasks(this.tasklistLength)
       })
       // save tasklist to local storage CE listener
       eventBus.$on('updateLS', () => {
         this.saveToLocalStorage()
+        // sotre
+        store.updateNum_CurrentTasks(this.tasklistLength)
       })
       // archive completed task, send to completedtaskcmp then update LS 
       eventBus.$on('archiveTask', index => {
@@ -185,6 +196,8 @@
         eventBus.$emit('sendTaskToCompletedList', this.taskList[index])
         this.taskList.splice(index, 1)
         this.saveToLocalStorage()
+        // store
+        store.updateNum_CurrentTasks(this.tasklistLength)
       })
       // update additional details receiving CE
       eventBus.$on('updateNewDetails', newDetails => {
