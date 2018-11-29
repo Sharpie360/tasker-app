@@ -2,7 +2,7 @@
     <svg 
       class="step-optional-svg pointer" 
       xmlns="http://www.w3.org/2000/svg" 
-      viewBox="0 0 384 512"
+      viewBox="0 0 430 512"
       >
         <path 
           class="optional-svg-path"
