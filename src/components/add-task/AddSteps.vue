@@ -10,7 +10,7 @@
     </h5>
     <div class="card-body p-0">
       <ul class="list-group list-group-flush" id="steps-list">
-        <li class="list-group-item py-2 pr-1" v-for="(step, i) in steps" :key="i">
+        <li class="list-group-item py-2 pr-2" v-for="(step, i) in steps" :key="i">
           <div class="form-group step-group mb-0">
             <!-- add editmode with vshow -->
             <label 
@@ -40,13 +40,13 @@
                   :optional="steps[i].isOptionalStep">
                 </app-optional-svg>
               </div>
-                
-              <img 
-                src="../../assets/times-solid.svg" 
-                alt="icon button delete step" 
-                class="actionBtn actionBtn-icon step-remove pointer"
+
+              <div 
                 @click="deleteStep(i)"
-              >
+                class="action-btn-outer">
+                <app-delete-svg></app-delete-svg>
+              </div>
+
             </div>
           </div>
         </li>
@@ -61,6 +61,7 @@
 
   import ImportantSVG from '../svgs/ImportantSVG'
   import OptionalSVG from '../svgs/OptionalSVG'
+  import DeleteSVG from '../svgs/DeleteSVG'
 
   export default {
     data () {
@@ -70,7 +71,8 @@
     },
     components: {
       'app-important-svg': ImportantSVG,
-      'app-optional-svg': OptionalSVG
+      'app-optional-svg': OptionalSVG,
+      'app-delete-svg': DeleteSVG
     },
     methods: {
       addStepToSteps(i){
@@ -194,6 +196,26 @@
   height: 2.35rem;
   width: 2.35rem;
 }
+
+
+@media screen and (max-width: 480px) {
+  .step-group {
+    display: grid;
+    grid-template-areas: 
+      "label . . actions"
+      "input input input input";
+  }
+  .step-group--label {
+    grid-area: label;
+  }
+  .step-group--actionBtns {
+    grid-area: actions;
+  }
+  .step-group--input {
+    grid-area: input;
+  }
+}
+
 
 
 </style>
