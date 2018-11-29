@@ -239,9 +239,26 @@
 - TaskDetails mobile responsive
 - Add Task input mobile responsive
 
+
+## 11/23/18
+
+### DeleteSVG Component
+- converted image to svg cmp
+
+### Completed On Time Dynamic Styling
+- checks if time remaining
+- sets either of 2 classes to style el
+
+### Media Queries
+- Add Step cmp reworked using CSS Grid
+
+### Counter Store
+- started on methods and comms between app and store
+
+
 ---
 ### Checklist
-* [ ] fine tune styling <-----
+* [x] fine tune styling <-----
 * [x] debug important step event.
 * [ ] change contact to resources?
 * [x] additional details - card flush list
@@ -263,6 +280,11 @@
 * [x] store completed tasks in LS too. 
 * [x] display if important or optional or both for completed task steps.
 * [x] edit details 
+* [x] delete step to SVG
+* [x] Media Queries!
+  * [x] Fix Add step styling
+  * [x] completed task styling
+* [x] styles for if completed on time or late
 
 
 
@@ -281,22 +303,15 @@
 ----
 # Livestream Todo
 
-- NavBar?
-* [x] Media Queries!
-  * [ ] Fix Add step styling
-  * [ ] completed task styling
-* [ ] styles for if completed on time or late
 * [ ] methods for Counter Store
-* [ ] delete step to SVG
-
-
-- Set up mixin for formatDate Fn
-- debug date object minus day thing
-
+* [ ] Set up mixin for formatDate Fn
+* [ ] debug date object minus day thing
 * [ ] accessibility for action buttons
 * [ ] hover tool tips??
+* [ ] caret to SVG cmp
+- NavBar?
 
 
--+ svgs into seperate cmps
+
 
 - SET DATABASE UP!
