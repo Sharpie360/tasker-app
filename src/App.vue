@@ -36,20 +36,24 @@
     </div>
 
 
-
   </div>
 </template>
 
 <script>
+import { store } from './store.js'
 import TaskList from './components/task-list/TaskList'
 import CompletedTaskList from './components/completed-tasks/CompletedTaskList'
 import AddTask from './components/add-task/AddTask'
+import { eventBus } from './main.js';
 
 export default {
   name: 'app',
   data () {
     return {
-      showCompletedTasksCmp: false
+      showCompletedTasksCmp: false,
+      storeData: {
+        currentTasks: store.num_CurrentTasks
+      }
     }
   },
   components: {
@@ -57,9 +61,7 @@ export default {
     'app-completed-task-list': CompletedTaskList,
     'app-add-task': AddTask,
   },
-  methods: {
-    
-  }
+
 }
 </script>
 
