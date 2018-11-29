@@ -24,7 +24,7 @@
   .step-important-svg {
     flex: 1;
     height: 1.75rem;
-    width: 1.75rem
+    width: 1.75rem;
   }
   .important-svg-path {
     fill: rgba(0, 0, 0, .25);
