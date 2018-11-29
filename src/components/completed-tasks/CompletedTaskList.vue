@@ -22,7 +22,9 @@
                   <span>{{ checkStepImportance(step) }}</span>
                 </li>
               </ul>
-              <div class="card-header">
+              <div 
+                class="card-header"
+                :class="{ 'completed-late': !checkIfCompletedOnTime(taskIndex), 'on-time': checkIfCompletedOnTime(taskIndex) }">
                 <div class="flexbox-space-between">
                   <h6 class="mb-0"> 
                     Date Due: {{ task.details.due }}
@@ -85,7 +87,24 @@ export default {
     }
   },
   props: ['showCompletedTasksCmp'],
+
   methods: {
+    checkIfCompletedOnTime(index) {
+      const dueDone = new Date(this.completedTaskList[index].details.due)
+      const dueTime = dueDone.getTime()
+
+      const actualDone = new Date(this.completedTaskList[index].details.completedDate)
+      const actualTime = actualDone.getTime()
+      const timeDiff = dueTime - actualTime
+      if(timeDiff > 0) {
+        console.log('on time')
+        return true
+      }
+      else {
+        console.log('late')
+        return
+      }
+    },
     getCurrentDate(){
       const today = new Date();
       const cleanedDate = today.toLocaleDateString()
@@ -142,5 +161,11 @@ export default {
   justify-content: space-between;
 }
 
+.on-time {
+  background-color: rgba(0, 214, 164, .5);
+}
+.completed-late {
+  background-color: rgba(214, 35, 35, .3);
+}
 
 </style>
