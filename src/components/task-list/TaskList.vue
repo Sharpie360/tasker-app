@@ -67,22 +67,22 @@
         taskList: [
           { 
             _id: 0,
-            task: "Work on Tasker App", 
+            task: "Welcome to Tasker!", 
             completed: false, 
             task_detailsShown: true,
             details: {
               due: '10/22/18',
-              contact: 'n/a' , 
+              contact: 'RabbitWerks.js' , 
               steps: [
                 { 
-                  value: 'write code in VUE!',
+                  value: 'Add A New Task!',
                   editMode: false,
                   isImportantStep: true,
                   isOptionalStep: false,
                   stepCompleted: false
                 }, 
                 {
-                  value: 'style stuff',
+                  value: 'Double Click Me To Edit!',
                   editMode: false,
                   isImportantStep: false,
                   isOptionalStep: true,
@@ -90,7 +90,7 @@
 
                 }, 
                 {
-                  value: 'groove out',
+                  value: 'Track Progress and Archive Complete',
                   editMode: false,
                   isImportantStep: false,
                   isOptionalStep: false,
