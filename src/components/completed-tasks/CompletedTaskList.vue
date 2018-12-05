@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card display-wrapper" v-show="showCompletedTasksCmp">
+    <div class="card display-wrapper">
       <ul class="list-group">
         <li 
           v-for="(task, taskIndex) in completedTaskList"
