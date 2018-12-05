@@ -18,7 +18,7 @@
       <h2 
         class="shadow-white pointer hoverfx" 
         :class="{ 'current-cmp-highlight': showCompletedTasksCmp }"
-        @click="showCompletedTasksCmp = true">Completed
+        @click="showCompletedTasksCmp = true">Complete
       </h2>
     </div>
 
