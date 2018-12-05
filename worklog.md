@@ -240,7 +240,7 @@
 - Add Task input mobile responsive
 
 
-## 11/23/18
+## 11/28/18
 
 ### DeleteSVG Component
 - converted image to svg cmp
@@ -254,6 +254,19 @@
 
 ### Counter Store
 - started on methods and comms between app and store
+
+
+## 12/04/18
+
+### Animations!
+- Current / Complete Task Cmps transition
+- height transition for add-details body
+- alert message css animation
+- - using javascript hooks and css animations
+
+### Minor code changes
+- Wording for app cmps
+- vue directives adjustments
 
 
 ---
@@ -303,13 +316,28 @@
 ----
 # Livestream Todo
 
-* [ ] methods for Counter Store
-* [ ] Set up mixin for formatDate Fn
+* [ ] integrate some animations! - SWEET! :)
+  * [x] add task expand
+  * [x] trans between current completed
+  * [ ] task details expand
+  * [ ] add step
+  * [ ] delete taskfade out
+  * [x] alert fade animations
+
+  
+* [ ] modal instead of confirm
+
 * [ ] debug date object minus day thing
+* [ ] Set up mixin for formatDate Fn
+* [ ] caret to SVG cmp
+
 * [ ] accessibility for action buttons
 * [ ] hover tool tips??
-* [ ] caret to SVG cmp
-- NavBar?
+* [ ] methods for Counter Store - vuex things
+
+- NavBar? - at some point
+- Stats modal / view
+
 
 
 
