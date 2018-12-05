@@ -13,7 +13,7 @@
       <h2 
         class="shadow-white pointer hoverfx" 
         :class="{ 'current-cmp-highlight': !showCompletedTasksCmp }"
-        @click="showCompletedTasksCmp = false">Current Tasks
+        @click="showCompletedTasksCmp = false">Current
       </h2>
       <h2 
         class="shadow-white pointer hoverfx" 
@@ -24,14 +24,20 @@
 
     <div class="secondary-focus-cmps">
 
-      <app-task-list  
-        :showCompletedTasksCmp="!showCompletedTasksCmp">
-      </app-task-list>
+      <transition name="fade" type="transition" mode="out-in">
+        <app-task-list  
+          v-if="!showCompletedTasksCmp"
+          :showCompletedTasksCmp="!showCompletedTasksCmp"
+          key="current">
+        </app-task-list>
 
-      <app-completed-task-list 
-        id="cmp--completed-task-list"
-        :showCompletedTasksCmp="showCompletedTasksCmp">
-      </app-completed-task-list>
+        <app-completed-task-list 
+          v-else
+          id="cmp--completed-task-list"
+          :showCompletedTasksCmp="showCompletedTasksCmp"
+          key="completed">
+        </app-completed-task-list>
+      </transition>
 
     </div>
 
@@ -109,6 +115,23 @@ a {
 .current-cmp-highlight {
   color: #212121;
 }
+
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.1s ease-in-out;
+}
+.fade-leave-active {
+  transition: all 0.1s ease-in-out;
+  opacity: 1;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+
+
 
 @media screen and (max-width: 480px) {
   html {
