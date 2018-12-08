@@ -122,6 +122,7 @@ export default {
       return word
     },
     saveCompletedTaskListData() {
+      // localStorage.removeItem('completed-task-data')
       const completedTaskData = JSON.stringify(this.completedTaskList);
       localStorage.setItem('completed-task-data', completedTaskData)
     }
