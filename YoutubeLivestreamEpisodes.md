@@ -93,3 +93,31 @@ This is a list of all the streaming sessions in chonological order with links to
 - Completed Logic
 - Custom Validation Checking
 - Custom Events
+
+
+### Episode 10
+**Video**  
+[https://youtu.be/1wn1VfO-hng]  
+**Focuses:**   
+- Delete Task / Completed Task cmp
+- Custom Events
+- Refactoring to Child Components
+
+
+### Episode 11
+**Video**  
+[https://youtu.be/IynhzkLk7X4]  
+**Focuses:**   
+- Build Completed Tasks cmp
+- Task maintenance buttons
+- Finally Local Storage?
+
+
+### Episode 12
+**Video**  
+[https://youtu.be/DrTzzz7B288]  
+**Focuses:**   
+- debugging progress bar
+- svg transition animation
+- local storage time!
+- more debugging  
