@@ -17,23 +17,16 @@
     </div>
 
       <div class="card">
-        <h5 class="card-header add-details-header">Add Additional Details
+        <h5 class="card-header add-details--header">Add Additional Details
           <span 
-            class="add-details-expander" 
+            class="add-details--expander" 
             v-on:click="showAddDetailsCmp">+</span>
         </h5>
         
-        <transition 
-          name="expand" 
-          type="transition"
-          @before-enter="beforeEnter"
-          @after-enter="afterEnter"
-          @before-leave="beforeLeave"
-          :css="true"
-          >
-          <div class="card-body add-details-body" v-show="newTask.addDetails_detailsShown">
+        <expand-transition>
+          <div class="card-body expand-default" v-show="newTask.addDetails_detailsShown">
             <div 
-              class="grid"
+              class="add-details--grid"
               >
               <div class="form-group">
                 <label for="due-date">Due Date</label>
@@ -44,11 +37,10 @@
                 <input class="form-control" type="text" id="contact" v-model="newTask.contact">
               </div>
             </div> <!-- .grid end -->
-
             <app-add-steps></app-add-steps>
-
           </div>
-        </transition>
+        </expand-transition>
+
       </div>
 
     <div id="add-task-btn-div" class="mt-3">
@@ -82,15 +74,7 @@
   import { eventBus } from '../../main.js'
   import AddSteps from './AddSteps.vue'
 
-  function fadeChildren(el, opacity) {
-    //console.log(el)
-    const elemChildren = el.children
-    //console.log(children)
-    const children = Array.from(elemChildren)
-    children.forEach(child => {
-      child.style.opacity = opacity
-    })
-  }
+  import Expand_Transition_setOpacity from '../../components/transitions/Expand_Transition_setOpacity.vue'
 
   export default {
     data () {
@@ -113,7 +97,8 @@
     },
     props: ['showCompletedTasksCmp'],
     components: {
-      'app-add-steps': AddSteps
+      'app-add-steps': AddSteps,
+      'expand-transition': Expand_Transition_setOpacity
     },
     computed: {
       alertStyles () {
@@ -124,15 +109,7 @@
       },
     },
     methods: {
-      beforeEnter: (el) => {
-        fadeChildren(el, 0)
-      },
-      afterEnter: el => {
-        fadeChildren(el, 1)
-      },
-      beforeLeave: el => {
-        fadeChildren(el, 0)
-      },
+
       addNewTask() {
         if(this.newTask.task === '') {
           console.log('Task must have a title')
@@ -183,29 +160,17 @@
 
 </script>
 
-<style scoped>
+<style>
 
 .task-title-wrapper {
   display: flex;
 }
 
-.add-details-body {
+.add-details--body {
   max-height: 30rem;
   height: auto;
 }
 
-.expand-enter {
-  max-height: 0;
-}
-.expand-enter-active {
-  transition: max-height .1s ease-in-out;
-}
-.expand-leave-active {
-  transition: max-height .1s ease-in-out;
-}
-.expand-leave-to {
-  max-height: 0;
-}
 
 
 .alert-enter-active {
@@ -217,18 +182,18 @@
 
 
 
-.add-details-header {
+.add-details--header {
   display: flex;
   flex: 1;
   justify-content: space-between
 }
-.add-details-expander {
+.add-details--expander {
   font-size: 2.5rem;
   margin: -1rem 0 -.5rem 0;
   cursor: pointer;
 }
 
-.grid {
+.add-details--grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
