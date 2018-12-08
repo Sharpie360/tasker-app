@@ -10,46 +10,48 @@
     </h5>
     <div class="card-body p-0">
       <ul class="list-group list-group-flush" id="steps-list">
-        <li class="list-group-item py-2 pr-2" v-for="(step, i) in steps" :key="i">
-          <div class="form-group step-group mb-0">
-            <!-- add editmode with vshow -->
-            <label 
-              class="step-group--label mb-0" 
-              :for="steps[i]">Step {{ i + 1 }}.
-            </label>
+        <transition-group name="slide-down-up" type="transition" mode="out-in">
+          <li class="list-group-item py-2 pr-2" v-for="(step, i) in steps" :key="i">
+            <div class="form-group step-group mb-0">
+              <!-- add editmode with vshow -->
+              <label 
+                class="step-group--label mb-0" 
+                :for="steps[i]">Step {{ i + 1 }}.
+              </label>
 
-            <input 
-              class="form-control step-group--input" 
-              type="text" 
-              :id="steps[i]" 
-              v-model="steps[i].value">
+              <input 
+                class="form-control step-group--input" 
+                type="text" 
+                :id="steps[i]" 
+                v-model="steps[i].value">
 
-            <div class="step-group--actionBtns">
-              <div 
-                v-on:click="setAsImportantStep(i)"
-                class="action-btn-outer">
-                <app-important-svg 
-                  class="pointer"
-                  :important="steps[i].isImportantStep">
-                </app-important-svg>
+              <div class="step-group--actionBtns">
+                <div 
+                  v-on:click="setAsImportantStep(i)"
+                  class="action-btn-outer">
+                  <app-important-svg 
+                    class="pointer"
+                    :important="steps[i].isImportantStep">
+                  </app-important-svg>
+                </div>
+                <div 
+                  @click="setAsOptionalStep(i)"
+                  class="action-btn-outer">
+                  <app-optional-svg
+                    :optional="steps[i].isOptionalStep">
+                  </app-optional-svg>
+                </div>
+
+                <div 
+                  @click="deleteStep(i)"
+                  class="action-btn-outer">
+                  <app-delete-svg></app-delete-svg>
+                </div>
+
               </div>
-              <div 
-                @click="setAsOptionalStep(i)"
-                class="action-btn-outer">
-                <app-optional-svg
-                  :optional="steps[i].isOptionalStep">
-                </app-optional-svg>
-              </div>
-
-              <div 
-                @click="deleteStep(i)"
-                class="action-btn-outer">
-                <app-delete-svg></app-delete-svg>
-              </div>
-
             </div>
-          </div>
-        </li>
+          </li>
+        </transition-group>
       </ul>
     </div>
   </div>
@@ -214,6 +216,25 @@
   .step-group--input {
     grid-area: input;
   }
+}
+
+
+.slide-down-up-enter {
+  transform: scaleY(0);
+  opacity: 0;
+}
+.slide-down-up-enter-active {
+  transition: all .2s ease-in-out;
+}
+.slide-down-up-leave-active {
+  transition: all .2s ease-in-out;
+}
+.slide-down-up-leave-to {
+  transform: scaleY(0);
+  opacity: 0;
+}
+.slide-down-up-move {
+  transition: transform .3s;
 }
 
 
