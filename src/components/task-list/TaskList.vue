@@ -2,44 +2,49 @@
 
   <div class="card display-wrapper">
     <ul class="list-group">
-      <li 
-        v-for="(task, i) in taskList" 
-        :key="task._id"
-        :class="{ 'task-bg-completed': task.completed }"
-        class="list-group-item task-group">
-        <div class="task-header-group">
-          <div class="task-header">
-            <h3 :class="{ 'task-title-completed': task.completed }">
-              {{ task.task }}
-            </h3>
-            <div class="" @click="showDetails(task)">
-              <app-expander-svg
-                :isExpanded="task.task_detailsShown">
-              </app-expander-svg>
+      <transition-group name="delete-fade">
+        <li 
+          v-for="(task, i) in taskList" 
+          :key="task._id"
+          :class="{ 'task-bg-completed': task.completed }"
+          class="list-group-item task-group">
+          <div class="task-header-group">
+            <div class="task-header">
+              <h3 :class="{ 'task-title-completed': task.completed }">
+                {{ task.task }}
+              </h3>
+              <div class="" @click="showDetails(task)">
+                <app-expander-svg
+                  :isExpanded="task.task_detailsShown">
+                </app-expander-svg>
+              </div>
             </div>
+
+            <app-task-progress-bar 
+              :steps="task.details.steps">
+            </app-task-progress-bar>
           </div>
 
-          <app-task-progress-bar 
-            :steps="task.details.steps">
-          </app-task-progress-bar>
-        </div>
+          <keep-alive>
+            <expand-transition>
+              <app-task-details 
+                v-if="task.task_detailsShown"
+                :_id="task._id" 
+                :task-completed="task.completed"
+                :due="task.details.due"
+                :contact="task.details.contact"
+                :steps="task.details.steps"
+                class="expand-default">
+              </app-task-details>
+            </expand-transition>
+          </keep-alive>
 
-        <keep-alive>
-          <app-task-details 
-            v-if="task.task_detailsShown"
-            :_id="task._id" 
-            :task-completed="task.completed"
-            :due="task.details.due"
-            :contact="task.details.contact"
-            :steps="task.details.steps">
-          </app-task-details>
-        </keep-alive>
+          <app-task-manage-buttons
+            :task="task" :i="i">
+          </app-task-manage-buttons>
 
-        <app-task-manage-buttons
-          :task="task" :i="i">
-        </app-task-manage-buttons>
-
-      </li>
+        </li>
+      </transition-group>
     </ul>
   </div>
 </template>
@@ -52,12 +57,17 @@
   import TaskDetails from './TaskDetails.vue'
   import ManageButtons from './ManageButtons.vue'
 
+  import Expand_Transition_setOpacity from '../../components/transitions/Expand_Transition_setOpacity.vue'
+  import Expand_Transition_fadeInOut from '../../components/transitions/Expand_Transition_FadeInOut.vue'
+
+
 
   function formatDate(date) {
     const newDate = new Date(date)
     const formattedDate = newDate.toLocaleDateString()
     return formattedDate
   }
+ 
 
   export default {
     data () {
@@ -105,7 +115,9 @@
       'app-expander-svg': ExpanderSVG,
       'app-task-progress-bar': ProgressBar,
       'app-task-details': TaskDetails,
-      'app-task-manage-buttons': ManageButtons
+      'app-task-manage-buttons': ManageButtons,
+      'expand-transition': Expand_Transition_setOpacity,
+      'expand-transition-f': Expand_Transition_fadeInOut
     },
     props: ['showCompletedTasksCmp'],
     computed: {
@@ -114,6 +126,8 @@
       }
     },
     methods: {
+      
+      // component methods
       showDetails(task) {
         task.task_detailsShown = !task.task_detailsShown
       },
@@ -134,12 +148,9 @@
           document.querySelector('.task-checkbox').checked = false
         }
       },
-      archiveTask(i){
-        console.log('hello task')
-      },
       saveToLocalStorage(){
         const taskData = JSON.stringify(this.taskList)
-        console.log('data is ', taskData)
+        // console.log('data is ', taskData)
         localStorage.setItem('task-data', taskData)
       }
     },
@@ -190,8 +201,8 @@
       })
       // archive completed task, send to completedtaskcmp then update LS 
       eventBus.$on('archiveTask', index => {
-        this.archiveTask(index)
         eventBus.$emit('sendTaskToCompletedList', this.taskList[index])
+        console.log(this.taskList[index])
         this.taskList.splice(index, 1)
         this.saveToLocalStorage()
         // store
@@ -240,4 +251,12 @@
     width: 1rem;
   }
 
+  .delete-fade-leave-active {
+    transition: opacity .2s ease-out;
+  }
+  .delete-fade-leave-to {
+    opacity: 0;
+  }
+
+  
 </style>
