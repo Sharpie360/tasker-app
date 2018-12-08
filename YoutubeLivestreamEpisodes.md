@@ -5,6 +5,9 @@ I have been livestreaming most of the coding done during this project on my Rabb
 This is a list of all the streaming sessions in chonological order with links to each of the videos on youtube. Check them out, like, comment, and subscribe! 
 **[https://www.youtube.com/channel/UCyH4i2twA5tdJhZVcSoNZRQ]**
 
+Check out the live app hosted on Netlify at  
+**[https://bit.ly/rabbitwerks-tasker]**
+
 
 ### Episode 01
 **Video:**  
@@ -121,3 +124,40 @@ This is a list of all the streaming sessions in chonological order with links to
 - svg transition animation
 - local storage time!
 - more debugging  
+
+
+### Episode 13
+**Video**  
+[https://youtu.be/82m7HbmYM1I]  
+**Focuses:**   
+- Reworking App Layout
+- Managment buttons
+- debugging
+
+
+### Episode 14
+**Video**  
+[https://youtu.be/8kWR9BAXTAM]  
+**Focuses:**   
+- Clear add-task button
+- Date completed data
+- Local storage for Completed Tasks
+- Start global counters
+
+
+### Episode 15
+**Video**  
+[https://youtu.be/K2DkuWQC4r4]  
+**Focuses:**   
+- Edit additional details 
+- Media queries
+
+
+### Episode 16
+**Video**  
+[https://youtu.be/7hwmzTOWrW4]  
+**Focuses:**   
+- Delete Step image to svg
+- Media queries continued
+- Start on store.js
+
