@@ -269,6 +269,20 @@
 - vue directives adjustments
 
 
+## 12/07/18
+
+### Animations!
+- Delete Task Fade out
+- add steps animation
+
+### Re-usable Transition Components
+- Expand Set Opacity
+- Expand Fade InOut
+- - transition component using slot to act as a wrapper
+- - must apply a default class to wrapped cmp
+
+
+
 ---
 ### Checklist
 * [x] fine tune styling <-----
@@ -316,13 +330,14 @@
 ----
 # Livestream Todo
 
-* [ ] integrate some animations! - SWEET! :)
+* [x] integrate some animations! - SWEET! :)
   * [x] add task expand
   * [x] trans between current completed
-  * [ ] task details expand
-  * [ ] add step
-  * [ ] delete taskfade out
+  * [x] task details expand
+  * [x] add step
+  * [x] delete taskfade out
   * [x] alert fade animations
+    * [x] build reuse transition cmp
 
   
 * [ ] modal instead of confirm
@@ -339,7 +354,8 @@
 - Stats modal / view
 
 
-
-
+BUGS!
+- multiple completed task entries
+- manage btns issue init position on left?
 
 - SET DATABASE UP!
