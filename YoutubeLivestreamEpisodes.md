@@ -12,6 +12,7 @@ Check out the live app hosted on Netlify at
 ### Episode 01
 **Video:**  
 [https://www.youtube.com/watch?v=-vzv3VPciu8]  
+  
 **Focuses:**  
 - Basic functionality for task list cmp
 - Task details object
@@ -20,6 +21,7 @@ Check out the live app hosted on Netlify at
 ### Episode 02
 **Video**  
 [https://www.youtube.com/watch?v=TKI3eUa-VDc]  
+  
 **Focuses:**   
 - Styling Components in Vue
 - Task details object
@@ -30,6 +32,7 @@ Check out the live app hosted on Netlify at
 ### Episode 03
 **Video**  
 [https://youtu.be/yLu2OWiqwMY]  
+  
 **Focuses:**   
 - Task details object  
 - Step Options  
@@ -40,6 +43,7 @@ Check out the live app hosted on Netlify at
 ### Episode 04
 **Video**  
 [https://youtu.be/UrUeqC25WYY]  
+  
 **Focuses:**   
 - Task details object  
 - Custom Events  
@@ -53,6 +57,7 @@ Check out the live app hosted on Netlify at
 ### Episode 05
 **Video**  
 [https://youtu.be/DFvKSjZDYxQ]  
+  
 **Focuses:**   
 - SVG transforms / click events  
 - breaking out additional details to its own cmp.  
@@ -63,6 +68,7 @@ Check out the live app hosted on Netlify at
 ### Episode 06
 **Video**  
 [https://youtu.be/DFvKSjZDYxQ]  
+  
 **Focuses:**   
 - SVG transforms / click events  
 - breaking out additional details to its own cmp.  
@@ -74,6 +80,7 @@ Check out the live app hosted on Netlify at
 ### Episode 07
 **Video**  
 [https://youtu.be/rJvHi7Bhau0]  
+  
 **Focuses:**   
 - Custom Events  
 - Refactoring to Child Components  
@@ -84,6 +91,7 @@ Check out the live app hosted on Netlify at
 ### Episode 08
 **Video**  
 [https://youtu.be/X1rSUFlekKo]  
+  
 **Focuses:**   
 - coming soon!  
 
@@ -92,6 +100,7 @@ Check out the live app hosted on Netlify at
 *halloween edition*
 **Video**  
 [https://youtu.be/X1rSUFlekKo]  
+  
 **Focuses:**   
 - Completed Logic
 - Custom Validation Checking
@@ -101,6 +110,7 @@ Check out the live app hosted on Netlify at
 ### Episode 10
 **Video**  
 [https://youtu.be/1wn1VfO-hng]  
+  
 **Focuses:**   
 - Delete Task / Completed Task cmp
 - Custom Events
@@ -110,6 +120,7 @@ Check out the live app hosted on Netlify at
 ### Episode 11
 **Video**  
 [https://youtu.be/IynhzkLk7X4]  
+  
 **Focuses:**   
 - Build Completed Tasks cmp
 - Task maintenance buttons
@@ -119,6 +130,7 @@ Check out the live app hosted on Netlify at
 ### Episode 12
 **Video**  
 [https://youtu.be/DrTzzz7B288]  
+  
 **Focuses:**   
 - debugging progress bar
 - svg transition animation
@@ -129,6 +141,7 @@ Check out the live app hosted on Netlify at
 ### Episode 13
 **Video**  
 [https://youtu.be/82m7HbmYM1I]  
+  
 **Focuses:**   
 - Reworking App Layout
 - Managment buttons
@@ -138,6 +151,7 @@ Check out the live app hosted on Netlify at
 ### Episode 14
 **Video**  
 [https://youtu.be/8kWR9BAXTAM]  
+  
 **Focuses:**   
 - Clear add-task button
 - Date completed data
@@ -148,6 +162,7 @@ Check out the live app hosted on Netlify at
 ### Episode 15
 **Video**  
 [https://youtu.be/K2DkuWQC4r4]  
+  
 **Focuses:**   
 - Edit additional details 
 - Media queries
@@ -156,6 +171,7 @@ Check out the live app hosted on Netlify at
 ### Episode 16
 **Video**  
 [https://youtu.be/7hwmzTOWrW4]  
+  
 **Focuses:**   
 - Delete Step image to svg
 - Media queries continued
