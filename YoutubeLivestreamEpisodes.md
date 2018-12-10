@@ -172,7 +172,7 @@ Check out the live app hosted on Netlify at
 **Video**  
 [https://youtu.be/7hwmzTOWrW4]  
   
-**Focuses:**   
+**Focuses:**
 - Delete Step image to svg
 - Media queries continued
 - Start on store.js
