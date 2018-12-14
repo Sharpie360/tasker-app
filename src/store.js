@@ -1,27 +1,33 @@
 import Vue from 'vue'
-import { eventBus } from './main'
+import Vuex from 'vuex'
 
-export const store = new Vue({
-  data () {
-    return {
-      num_CurrentTasks: 0,
-      num_CompletedTasks: 0,
-      num_TotalStepsCompleted: 0,
-      num_CompletedTaskOnTime: 0,
-      num_CompletedTaskLate: 0,
-      completedOnTimeRatio: this.getRatio
-    }
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    num_currentTasks: 0,
+    num_completeTasks: 0,
+    num_onTime: 0,
+    num_late: 0,
+    percentOnTime: ''
   },
-  computed: {
-    getRatio() {
-      
-    }
+  mutations: {
+    updateCurrentTaskCount(state, value) {
+      state.num_currentTasks = value
+    },
+    updateCompleteTaskCount(state, value) {
+      state.num_completeTasks = value
+    },
   },
-  methods: {
-    updateNum_CurrentTasks(numOfTasks) {
-      this.num_CurrentTasks = numOfTasks
-      console.log(this.num_CurrentTasks)
-      eventBus.$emit('updatedCurrentTasksCount', this.num_CurrentTasks)
+  actions: {
+    updateCurrentTaskCount(context, value) {
+      context.commit('updateCurrentTaskCount', value)
+    },
+    updateCompleteTaskCount(context, value) {
+      context.commit('updateCompleteTaskCount', value)
     }
+
   }
 })
+
+export default store
