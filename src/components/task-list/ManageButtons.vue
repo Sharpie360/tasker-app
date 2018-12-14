@@ -1,6 +1,6 @@
 <template>
   <div class="flexbox-space-between">
-    <div>
+    <div >
       <button
         v-show="task.completed"
         @click="archiveTask(i)"
@@ -70,5 +70,9 @@ export default {
 </script>
 
 <style>
-
+.flexbox-space-between {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
 </style>
