@@ -46,7 +46,8 @@
 </template>
 
 <script>
-import { store } from './store.js'
+import { mapActions } from 'vuex'
+
 import TaskList from './components/task-list/TaskList'
 import CompletedTaskList from './components/completed-tasks/CompletedTaskList'
 import AddTask from './components/add-task/AddTask'
@@ -57,9 +58,6 @@ export default {
   data () {
     return {
       showCompletedTasksCmp: false,
-      storeData: {
-        currentTasks: store.num_CurrentTasks
-      }
     }
   },
   components: {
@@ -67,6 +65,16 @@ export default {
     'app-completed-task-list': CompletedTaskList,
     'app-add-task': AddTask,
   },
+  methods: {
+    ...mapActions(['updateCompleteTaskCount'])
+  },
+  created() {
+    if(localStorage.getItem('completed-task-data')){
+      const temp = JSON.parse(localStorage.getItem('completed-task-data'))
+      console.log(temp)
+      this.updateCompleteTaskCount(temp.length)
+    }
+  }
 
 }
 </script>
