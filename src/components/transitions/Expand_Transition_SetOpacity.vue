@@ -23,7 +23,6 @@ function setOpacity_Children(el, opacity) {
   })
 }
 
-
 export default {
   methods: {
     beforeEnter: (el) => {
@@ -33,14 +32,15 @@ export default {
     afterEnter: el => {
       setOpacity_Children(el, 1)
     },
-    
     beforeLeave: el => {
       setOpacity_Children(el, 0)
     },
-    
   }
 }
 </script>
+
+
+
 
 <style>
 
