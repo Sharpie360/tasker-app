@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 import { eventBus } from '../../main.js'
 export default {
   data () {
@@ -89,6 +91,10 @@ export default {
   props: ['showCompletedTasksCmp'],
 
   methods: {
+    // VUEX 
+    ...mapActions(['updateCompleteTaskCount']),
+
+    // component methods
     checkIfCompletedOnTime(index) {
       const dueDone = new Date(this.completedTaskList[index].details.due)
       const dueTime = dueDone.getTime()
@@ -133,6 +139,7 @@ export default {
       this.completedTaskList = JSON.parse(localStorage.getItem('completed-task-data'))
     } else {
       console.log('no completed task data found...')
+      return
     }
   },
   mounted() {
@@ -149,6 +156,7 @@ export default {
         }
       })
       this.saveCompletedTaskListData()
+      this.updateCompleteTaskCount(this.completedTaskList.length)
     })
   },
 }
