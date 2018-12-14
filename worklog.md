@@ -282,6 +282,15 @@
 - - must apply a default class to wrapped cmp
 
 
+## 12/13/18
+
+### Manage buttons display bug fix
+- wasnt apllying the class initially
+
+### VUEX STORE
+- tracking stats
+- - current tasks
+- - completed tasks
 
 ---
 ### Checklist
@@ -313,6 +322,15 @@
   * [x] completed task styling
 * [x] styles for if completed on time or late
 
+* [x] integrate some animations! - SWEET! :)
+  * [x] add task expand
+  * [x] trans between current completed
+  * [x] task details expand
+  * [x] add step
+  * [x] delete taskfade out
+  * [x] alert fade animations
+    * [x] build reuse transition cmp
+
 
 
 * [ ] style app with RabbitWerks colors?
@@ -330,21 +348,23 @@
 ----
 # Livestream Todo
 
-* [x] integrate some animations! - SWEET! :)
-  * [x] add task expand
-  * [x] trans between current completed
-  * [x] task details expand
-  * [x] add step
-  * [x] delete taskfade out
-  * [x] alert fade animations
-    * [x] build reuse transition cmp
-
-  
 * [ ] modal instead of confirm
 
 * [ ] debug date object minus day thing
 * [ ] Set up mixin for formatDate Fn
+    * [ ] Moment.js
+
+* [ ] pull in Vuex for store 
+  * [x] num of current
+  * [x] num of complete
+  * [ ] num of complete on time
+  * [ ] num of complete late
+  * [ ] on time percentage
+  BONUS!!!
+  * [ ] number of steps completed total!
+
 * [ ] caret to SVG cmp
+
 
 * [ ] accessibility for action buttons
 * [ ] hover tool tips??
@@ -356,6 +376,6 @@
 
 BUGS!
 - multiple completed task entries
-- manage btns issue init position on left?
+
 
 - SET DATABASE UP!
