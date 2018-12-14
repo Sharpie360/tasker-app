@@ -50,8 +50,9 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+
   import { eventBus } from '../../main.js'
-  import { store } from '../../store.js'
   import ExpanderSVG from '../svgs/ExpanderSVG.vue'
   import ProgressBar from './ProgressBar.vue'
   import TaskDetails from './TaskDetails.vue'
@@ -126,7 +127,9 @@
       }
     },
     methods: {
-      
+      // VUEX 
+      ...mapActions(['updateCurrentTaskCount']),
+
       // component methods
       showDetails(task) {
         task.task_detailsShown = !task.task_detailsShown
@@ -157,8 +160,12 @@
     created() {
       if(localStorage.getItem('task-data')){
         this.taskList = JSON.parse(localStorage.getItem('task-data'))
+        // Vuex store
+        this.updateCurrentTaskCount(this.taskList.length)
       } else {
         console.log('no data found....') 
+        // Vuex store
+        this.updateCurrentTaskCount(this.taskList.length)
         return
       }
     },
@@ -176,8 +183,8 @@
           completed: false
         })
         this.saveToLocalStorage()
-        // store
-        store.updateNum_CurrentTasks(this.tasklistLength)
+        // Vuex store
+        this.updateCurrentTaskCount(this.taskList.length)
       })
       // receiving end of CE from TaskDetails
       eventBus.$on('toggleStepCompleted', indexID => {
@@ -191,13 +198,12 @@
       eventBus.$on('deleteTask', index => {
         this.taskList.splice(index, 1)
         this.saveToLocalStorage()
-        store.updateNum_CurrentTasks(this.tasklistLength)
+        // VUEX store
+        this.updateCurrentTaskCount(this.taskList.length)
       })
       // save tasklist to local storage CE listener
       eventBus.$on('updateLS', () => {
         this.saveToLocalStorage()
-        // sotre
-        store.updateNum_CurrentTasks(this.tasklistLength)
       })
       // archive completed task, send to completedtaskcmp then update LS 
       eventBus.$on('archiveTask', index => {
@@ -206,7 +212,6 @@
         this.taskList.splice(index, 1)
         this.saveToLocalStorage()
         // store
-        store.updateNum_CurrentTasks(this.tasklistLength)
       })
       // update additional details receiving CE
       eventBus.$on('updateNewDetails', newDetails => {
