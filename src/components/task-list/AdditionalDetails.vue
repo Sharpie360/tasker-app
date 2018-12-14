@@ -42,20 +42,17 @@
 
 <script>
 import { eventBus } from '../../main.js'
+import moment from 'moment'
 
 function formatDate(date) {
-  const newDate = new Date(date)
-  const formattedDate = newDate.toLocaleDateString()
+  const newDate = moment
+  // const formattedDate = newDate.toLocaleDateString()
   return formattedDate
 }
 
 function changeFormatForDatePicker(date){
-  const newDate = new Date(date)
-  const year = newDate.getFullYear()
-  const month = (newDate.getUTCMonth() + 1)
-  const day = (newDate.getUTCDate())
-  
-  return `${year}-${month}-${day}`
+  const newDate = moment(date)
+  console.log(newDate)
 }
 
 export default {
@@ -70,7 +67,7 @@ export default {
   created() {
     eventBus.$on('editDetailsCE', () => {
       this.editMode = true
-      changeFormatForDatePicker(this.due)
+      
     })
     eventBus.$on('saveEditsCE', () => {
       const newDetails = {
