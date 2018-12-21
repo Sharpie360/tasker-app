@@ -18,6 +18,9 @@ const store = new Vuex.Store({
     updateCompleteTaskCount(state, value) {
       state.num_completeTasks = value
     },
+    updateOnTimeCount(state) {
+      state.num_onTime++
+    }
   },
   actions: {
     updateCurrentTaskCount(context, value) {
@@ -25,6 +28,9 @@ const store = new Vuex.Store({
     },
     updateCompleteTaskCount(context, value) {
       context.commit('updateCompleteTaskCount', value)
+    },
+    updateOnTimeCount(context) {
+      context.commit('updateOnTimeCount')
     }
 
   }
